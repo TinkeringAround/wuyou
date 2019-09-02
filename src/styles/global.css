@@ -17,6 +17,10 @@ body {
   letter-spacing: 0.02rem;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .relative {
   position: relative;
 }

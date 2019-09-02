@@ -2,13 +2,17 @@ import React from 'react'
 import { Text } from 'grommet'
 
 // ===============================================
-interface Props {}
+interface Props {
+  size?: string
+  textAlign?: 'start' | 'end' | 'center'
+}
 
 // ===============================================
-const Paragraph: React.FC<Props> = ({ children }) => {
+const Paragraph: React.FC<Props> = ({ children, size = '1em', textAlign = 'start' }) => {
   return (
     <Text
-      size="1em"
+      size={size}
+      textAlign={textAlign}
       style={{
         lineHeight: 2,
         letterSpacing: '0.01rem',

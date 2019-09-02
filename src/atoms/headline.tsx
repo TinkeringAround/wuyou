@@ -3,13 +3,13 @@ import { Box, Heading, ResponsiveContext } from 'grommet'
 
 // ===============================================
 interface Props {
-  alignEnd: boolean
+  alignEnd?: boolean
   title: string
   subtitle?: string
 }
 
 // ===============================================
-const Headline: FC<Props> = ({ alignEnd, title, subtitle }) => (
+const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
   <ResponsiveContext.Consumer>
     {size => {
       const isMobile = size.includes('small')
