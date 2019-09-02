@@ -4,15 +4,20 @@ import * as serviceWorker from './serviceWorker'
 import { Grommet } from 'grommet'
 import * as Sentry from '@sentry/browser'
 
-// Pages:
-import Home from './pages/home/'
-
-// Components:
-import Navigation from './components/navigation'
+// Context:
+import Context from './contentful-context'
 
 // Styles:
 import './styles/global.css'
 import theme from './styles/theme'
+
+// Pages:
+import Home from './pages/home/'
+import Training from './pages/training'
+import Opinions from './pages/opinions'
+
+// Components:
+import Navigation from './components/navigation/'
 
 // Sentry Init
 Sentry.init({ dsn: 'https://1d28a670ef5d470da5b18d8b755e9b10@sentry.io/1515723' })
@@ -29,10 +34,13 @@ const App = () => {
 
   // ===============================================
   return (
-    <Grommet theme={theme} full>
-      <Navigation />
-      <Home />
-    </Grommet>
+    <Context.Provider value={{ contentful: client }}>
+      <Grommet theme={theme} full>
+        <Home />
+        <Training />
+        <Opinions />
+      </Grommet>
+    </Context.Provider>
   )
 }
 

@@ -1,3 +1,11 @@
+:root {
+  /* Colors */
+  --white: #fff;
+  --lightGrey: #f2f2f2;
+  --black: #262626;
+  --red: #8a010d;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -15,4 +23,13 @@ body {
 
 .absolute {
   position: absolute;
+}
+
+.overlay {
+  transition: 0.25s ease;
+}
+
+.overlay:hover {
+  opacity: 0.6;
+  transform: scale(1.01);
 }
