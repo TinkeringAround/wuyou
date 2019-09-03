@@ -26,25 +26,25 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
         const sectionLeft = isMobile
           ? {
               width: '90%',
-              height: textLeft ? 'auto' : '50vh',
+              height: textLeft ? 'auto' : '40vh',
               margin: 'auto'
             }
           : {
-              width: '45%',
+              width: textLeft ? '45%' : '40%',
               height: '85%',
               left: '3%',
-              top: '7.5%'
+              bottom: 0
             }
 
         const sectionRight = isMobile
           ? {
               width: '90%',
-              height: textLeft ? '50vh' : 'auto',
+              height: textLeft ? '40vh' : 'auto',
               margin: '2em auto'
             }
           : {
-              width: '45%',
-              height: '85%',
+              width: textLeft ? '40%' : '45%',
+              height: '100%',
               right: '7%',
               top: 0
             }
@@ -62,8 +62,7 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
             className="relative"
             justify="center"
             align="center"
-            width="100%"
-            height={isMobile ? 'auto' : '100%'}
+            height={isMobile ? 'auto' : '80vh'}
             direction="column"
           >
             <Box

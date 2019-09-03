@@ -36,7 +36,7 @@ const App = () => {
   return (
     <Context.Provider value={{ contentful: client }}>
       <Grommet theme={theme} full>
-        <Navigation />
+        {/* <Navigation /> */}
         <Home />
         <Training />
         <Opinions />

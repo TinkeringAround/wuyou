@@ -19,6 +19,7 @@ const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
           <Heading
             level="1"
             margin="0"
+            color="black"
             size={isMobile ? '3em' : '6em'}
             textAlign={alignEnd ? 'end' : 'start'}
             style={{ paddingRight: isMobile ? '0px' : '20px', lineHeight: 1 }}
@@ -26,12 +27,7 @@ const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
             {title}
           </Heading>
           {subtitle && subtitle !== '' && (
-            <Heading
-              level="2"
-              margin="0"
-              size={isMobile ? '1em' : '2em'}
-              style={{ opacity: 0.5, marginLeft: 6 }}
-            >
+            <Heading level="2" margin="0" size={isMobile ? '1em' : '2em'} style={{ opacity: 0.5 }}>
               {subtitle}
             </Heading>
           )}
@@ -39,7 +35,7 @@ const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
             width={isMobile ? '80%' : '50%'}
             height="1.25em"
             background="red"
-            margin={isMobile ? '1em 0 0 0' : '1em 0 0 6px'}
+            margin="1em 0 0 0"
           ></Box>
         </Box>
       )

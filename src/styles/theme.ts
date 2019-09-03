@@ -19,6 +19,7 @@ const theme = {
     },
     colors: {
       white: '#fff',
+      light: 'rgb(242, 242, 242)',
       lightGrey: '#f2f2f2',
       black: '#262626',
       red: '#8a010d'

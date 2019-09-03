@@ -23,24 +23,24 @@ const DialogAnimation = posed.div({
 interface Props {
   showDialog: boolean
   closeDialog: any
+  isMobile?: boolean
 }
 
 // ===============================================
-const Dialog: React.FC<Props> = ({ children, showDialog, closeDialog }) => {
+const Dialog: React.FC<Props> = ({ children, showDialog, closeDialog, isMobile = false }) => {
   // Styles
-  const iconSize = '25px'
+  const iconSize = '35px'
 
   const dialog = {
     top: '5%',
-    left: '5%',
-    width: '90%',
-    height: '90%',
+    left: isMobile ? 0 : '10%',
+    width: isMobile ? '100%' : '80%',
+    height: isMobile ? '95%' : '90%',
     zIndex: 701,
 
     backgroundColor: 'rgb(255,255,255)',
 
     display: 'flex',
-    flex: 'row',
     justifyContent: 'center',
     alignItems: 'center'
   }
@@ -71,11 +71,11 @@ const Dialog: React.FC<Props> = ({ children, showDialog, closeDialog }) => {
               }}
               onClick={closeDialog}
             >
-              <svg className="Icon" width={iconSize} height={iconSize} viewBox={close.viewport}>
+              <svg className="icon" width={iconSize} height={iconSize} viewBox={close.viewport}>
                 {close.path}
               </svg>
             </Box>
-            <Box width="90%" height="90%" margin="0">
+            <Box width="90%" height="90%" margin="0" direction="column">
               {children}
             </Box>
           </DialogAnimation>

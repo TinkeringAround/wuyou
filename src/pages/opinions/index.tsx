@@ -14,10 +14,11 @@ import Paragraph from '../../atoms/paragraph'
 
 // Custom Components
 import LoadingSpinner from '../../components/loadingspinner'
+import Dialog from '../../components/dialog'
+import Spacer from '../../components/spacer'
 
 // Utility
 import { shuffle } from '../../utility'
-import Dialog from '../../components/dialog'
 
 // ===============================================
 interface Props {}
@@ -99,8 +100,14 @@ const Opinions: React.FC<Props> = () => {
               </Box>
             ) : (
               <>
+                <Spacer height="100px" />
                 <Box width="100%">
-                  <Box width="90%" justify="center" align="center" margin="0 auto 1.5em auto">
+                  <Box
+                    width="90%"
+                    justify="center"
+                    align="center"
+                    margin={'0 auto' + (isMobile ? '1em' : '1.5em') + ' auto'}
+                  >
                     <Headline alignEnd={false} title="Meinungen." />
                   </Box>
                   <Box
@@ -116,7 +123,7 @@ const Opinions: React.FC<Props> = () => {
                           key={'Quote-' + index}
                           width={isMobile ? '90%' : '30%'}
                           direction="column"
-                          margin={isMobile ? '2em auto' : '0'}
+                          margin={isMobile ? '1.75em auto' : '0'}
                         >
                           <Text style={quoteContent}>{'"' + quote.quote + '"'}</Text>
                           <Text textAlign="end" style={quoteAuthor}>
@@ -133,59 +140,100 @@ const Opinions: React.FC<Props> = () => {
                       align="center"
                       pad={isMobile ? '2em 0' : '2.5em'}
                     >
-                      <Box margin="0 auto 2em auto" width="80%" justify="center" align="center">
-                        <Paragraph size={isMobile ? '0.75em' : '1.25em'} textAlign="center">
+                      <Box
+                        margin="0 auto 2em auto"
+                        width={isMobile ? '90%' : '80%'}
+                        justify="center"
+                        align="center"
+                      >
+                        <Paragraph size={isMobile ? '1em' : '1.25em'} textAlign="center">
                           Kommt einfach mal zu einem <u>kostenlosen Probletraining</u> bei uns
                           vorbei und macht mit. Falls es euch gefällt und ihr gerne bei uns
                           beitreten wollt, dann könnt Ihr euch hier über die Preise informieren.
                         </Paragraph>
                       </Box>
-                      <Button active onClick={() => setShow(true)}>
-                        Preisliste für eine Mitgliedschaft
-                      </Button>
+                      <Box width={isMobile ? '90%' : '50%'}>
+                        <Button active onClick={() => setShow(true)} textAlign="center">
+                          Preisliste für eine Mitgliedschaft
+                        </Button>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
-                <Dialog showDialog={show} closeDialog={() => setShow(false)}>
+                <Dialog showDialog={show} closeDialog={() => setShow(false)} isMobile={isMobile}>
                   <Box width="100%">
                     <Headline
                       title="Preise."
                       subtitle="Monatliche Abrechnung. Kostenloses Probetraining."
                     />
                   </Box>
-                  <Box width="100%" height="70%" direction="row" margin="2em auto">
-                    <Box width="40%">
-                      <Paragraph>{opinions.pdf.description}</Paragraph>
-                      <Box width="80%" margin="0 0 0 1em">
+                  <Box
+                    width="100%"
+                    height={isMobile ? '80%' : 'auto'}
+                    direction={isMobile ? 'column' : 'row'}
+                    margin={(isMobile ? '0 ' : '2em ') + 'auto'}
+                    style={{ minHeight: '60%' }}
+                  >
+                    <Box
+                      width={isMobile ? '100%' : '50%'}
+                      margin={isMobile ? '1em 0 1.5em 0' : '0'}
+                    >
+                      <Paragraph size={isMobile ? '1em' : '1.2em'} margin="1.5em 0">
+                        {opinions.pdf.description}
+                      </Paragraph>
+                      <Box width="50%" margin="0 0 0 1em">
                         <Button active link={opinions.pdf.fileURL}>
                           Anmeldeformular
                         </Button>
                       </Box>
                     </Box>
-                    <Box width="60%" pad="0 1em" direction="row" wrap>
+                    <Box
+                      width={isMobile ? '100%' : '50%'}
+                      height={isMobile ? '50%' : 'auto'}
+                      direction="row"
+                      justify="center"
+                      align="center"
+                      margin={isMobile ? '0' : '1.5em 0'}
+                      wrap
+                    >
                       {opinions.prices.map((pricing: TPricing, index: number) => {
                         return (
                           <Box
                             key={'Pricing-' + index}
-                            width="45%"
-                            height="45%"
-                            margin="2.5%"
-                            background="lightgrey"
+                            className="card"
+                            width="46%"
+                            height="46%"
+                            margin="2%"
+                            background="light"
                             justify="center"
                             align="center"
-                            direction="column"
                           >
-                            <Box
-                              width="80%"
-                              height="30%"
-                              justify="center"
-                              align="center"
-                              background="white"
-                            >
-                              <Text>{pricing.title}</Text>
-                            </Box>
-                            <Box width="80%" height="70%" justify="center" align="center">
-                              <Text>{pricing.price + '€'}</Text>
+                            <Box width="90%" height="90%" justify="between">
+                              <Text
+                                color="black"
+                                size={isMobile ? '3em' : '4em'}
+                                textAlign="center"
+                                style={{ fontFamily: 'Roboto Mono', fontWeight: 600 }}
+                              >
+                                {pricing.price + '€'}
+                              </Text>
+                              <Box
+                                width="100%"
+                                height="50%"
+                                justify="center"
+                                align="center"
+                                background="white"
+                              >
+                                <Box width="90%">
+                                  <Text
+                                    size={isMobile ? '1em' : '1.25em'}
+                                    textAlign="center"
+                                    style={{ fontFamily: 'Roboto Mono' }}
+                                  >
+                                    {pricing.title}
+                                  </Text>
+                                </Box>
+                              </Box>
                             </Box>
                           </Box>
                         )

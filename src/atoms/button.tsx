@@ -38,11 +38,24 @@ interface Props {
   onClick?: any
   active?: boolean
   link?: string | null
+  textAlign?: 'start' | 'center' | 'end'
 }
 
 // ===============================================
-const Button: React.FC<Props> = ({ children, onClick, active = false, link = null }) => {
+const Button: React.FC<Props> = ({
+  children,
+  onClick,
+  active = false,
+  link = null,
+  textAlign = 'start'
+}) => {
   const [hover, setHover] = useState(false)
+
+  const a = {
+    color: active || hover ? 'white' : 'black',
+    textDecoration: 'none',
+    transition: 'all 0.2s'
+  }
 
   return (
     <ResponsiveContext.Consumer>
@@ -57,15 +70,16 @@ const Button: React.FC<Props> = ({ children, onClick, active = false, link = nul
             onMouseOver={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            <Box justify="center" height="fit-content" width="fit-content">
+            <Box justify="center" height="fit-content" width="100%">
               <Text
                 size={isMobile ? '0.8em' : '1.25em'}
                 weight="bold"
+                textAlign={textAlign}
                 color={hover || active ? theme.global.colors.white : theme.global.colors.black}
                 style={{ padding: isMobile ? '1em' : '0.75em', ...text }}
               >
                 {link ? (
-                  <a href={link} target="_blank" rel="noopener noreferrer">
+                  <a href={link} target="_blank" rel="noopener noreferrer" style={a}>
                     {children}
                   </a>
                 ) : (
