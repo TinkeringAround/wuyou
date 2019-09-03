@@ -46,7 +46,6 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
                 }
               }
             })
-            console.log('Media: ', media)
             setMedia(media)
           }
         })

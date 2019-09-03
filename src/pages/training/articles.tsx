@@ -51,6 +51,7 @@ const Articles: FC<Props> = ({ articles }) => {
                       title={article.title}
                       subtitle={article.subtitle}
                       paragraph={article.paragraph}
+                      url={article.url}
                     />
                   </div>
                 ))}

@@ -8,7 +8,7 @@ export type TArticle = {
   title: string
   subtitle: string
   paragraph: string
-  // image: string
+  url: string
 }
 
 export type TTrainer = {

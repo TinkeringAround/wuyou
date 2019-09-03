@@ -42,7 +42,7 @@ const App = () => {
 
             return (
               <>
-                {/* <Navigation /> */}
+                <Navigation />
                 <Home />
                 <Training />
                 <Opinions />

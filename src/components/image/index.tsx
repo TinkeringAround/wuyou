@@ -51,11 +51,11 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
   }
 
   const overlay = {
-    top: 0,
-    left: 0,
+    top: 'auto',
+    left: 'auto',
     zIndex: 1,
-    width: '100%', // ehemals calc(100% - 19px) TODO!
-    height: '100%', // ehemals calc(100% - 19px) TODO!
+    width: 'calc(100% - 19px)',
+    height: 'calc(100% - 19px)',
     backgroundColor: 'rgba(255, 255, 255, 0.85)',
 
     display: 'flex',
@@ -71,7 +71,6 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
     width: '85%',
     height: 'fit-content',
     fontSize: isMobile ? (small ? '0.7em' : '1em') : small ? '0.8em' : '1.25em',
-    //margin: isMobile ? '0 auto 10px auto' : '0 auto 5px auto',
     lineHeight: 1.25,
     fontFamily: 'Roboto Mono'
   }

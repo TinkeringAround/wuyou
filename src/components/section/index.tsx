@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Box, ResponsiveContext } from 'grommet'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 // Atoms:
 import Headline from '../../atoms/headline'
@@ -11,12 +12,11 @@ interface Props {
   title: string
   subtitle: string
   paragraph: string
+  url: string
 }
 
 // ===============================================
-const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
-  // TODO: image
-
+const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => {
   return (
     <ResponsiveContext.Consumer>
       {size => {
@@ -57,6 +57,19 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
           </Box>
         )
 
+        const image = (
+          <LazyLoadImage
+            alt={title}
+            effect="blur"
+            src={url}
+            scrollPosition={false}
+            visibleByDefault={false}
+            width="100%"
+            height="100%"
+            style={{ objectFit: 'cover' }}
+          />
+        )
+
         return (
           <Box justify="center" align="center" height={isMobile ? 'auto' : '80vh'} pad="2%">
             <Box
@@ -69,20 +82,20 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
             >
               <Box
                 className={(isMobile ? '' : 'absolute ') + (textLeft ? '' : 'overlay')}
-                background={textLeft ? 'transparent' : 'lightgrey'}
+                background="transparent"
                 align="center"
                 style={sectionLeft}
               >
-                {textLeft ? text : ''}
+                {textLeft ? text : image}
               </Box>
 
               <Box
                 className={(isMobile ? '' : 'absolute ') + (textLeft ? 'overlay' : '')}
-                background={textLeft ? 'lightgrey' : 'transparent'}
+                background="transparent"
                 align="end"
                 style={sectionRight}
               >
-                {textLeft ? '' : text}
+                {textLeft ? image : text}
               </Box>
             </Box>
           </Box>

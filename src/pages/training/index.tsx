@@ -34,8 +34,8 @@ const Training = () => {
                 return {
                   title: article.fields['title'],
                   subtitle: article.fields['subtitle'] != null ? article.fields['subtitle'] : '',
-                  paragraph: article.fields['content']
-                  // image: "https:" + article.fields['image]
+                  paragraph: article.fields['content'],
+                  url: 'https:' + article.fields['image'].fields['file'].url
                 }
               }),
               trainers: results.items[0].fields['trainers'].map((trainer: any) => {

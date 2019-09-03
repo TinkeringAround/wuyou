@@ -51,16 +51,11 @@ const Button: React.FC<Props> = ({
 }) => {
   const [hover, setHover] = useState(false)
 
-  const a = {
-    color: active || hover ? 'white' : 'black',
-    textDecoration: 'none',
-    transition: 'all 0.2s'
-  }
-
   return (
     <ResponsiveContext.Consumer>
       {size => {
         const isMobile = size.includes('small')
+
         return (
           <GrommetButton
             className="relative"
@@ -69,6 +64,8 @@ const Button: React.FC<Props> = ({
             onClick={onClick}
             onMouseOver={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
+            target={link ? '_blank' : undefined}
+            href={link ? link : undefined}
           >
             <Box justify="center" height="fit-content" width="100%">
               <Text
@@ -78,13 +75,7 @@ const Button: React.FC<Props> = ({
                 color={hover || active ? theme.global.colors.white : theme.global.colors.black}
                 style={{ padding: isMobile ? '1em' : '0.75em', ...text }}
               >
-                {link ? (
-                  <a href={link} target="_blank" rel="noopener noreferrer" style={a}>
-                    {children}
-                  </a>
-                ) : (
-                  <>{children}</>
-                )}
+                {children}
               </Text>
             </Box>
             <Animation
