@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
-import { Grommet } from 'grommet'
+import { Grommet, ResponsiveContext } from 'grommet'
 import * as Sentry from '@sentry/browser'
 
 // Context:
@@ -15,6 +15,7 @@ import theme from './styles/theme'
 import Home from './pages/home/'
 import Training from './pages/training'
 import Opinions from './pages/opinions'
+import Gallery from './pages/gallery'
 
 // Components:
 import Navigation from './components/navigation/'
@@ -32,14 +33,24 @@ const contentfulClient = require('contentful').createClient({
 const App = () => {
   const [client] = useState(contentfulClient)
 
-  // ===============================================
   return (
     <Context.Provider value={{ contentful: client }}>
       <Grommet theme={theme} full>
-        {/* <Navigation /> */}
-        <Home />
-        <Training />
-        <Opinions />
+        <ResponsiveContext.Consumer>
+          {size => {
+            const isMobile = size.includes('small')
+
+            return (
+              <>
+                {/* <Navigation /> */}
+                <Home />
+                <Training />
+                <Opinions />
+                <Gallery isMobile={isMobile} />
+              </>
+            )
+          }}
+        </ResponsiveContext.Consumer>
       </Grommet>
     </Context.Provider>
   )

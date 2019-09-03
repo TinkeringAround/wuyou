@@ -178,10 +178,13 @@ const Opinions: React.FC<Props> = () => {
                       width={isMobile ? '100%' : '50%'}
                       margin={isMobile ? '1em 0 1.5em 0' : '0'}
                     >
-                      <Paragraph size={isMobile ? '1em' : '1.2em'} margin="1.5em 0">
+                      <Paragraph
+                        size={isMobile ? '0.8em' : '1.2em'}
+                        margin={isMobile ? '0' : '1.5em 0'}
+                      >
                         {opinions.pdf.description}
                       </Paragraph>
-                      <Box width="50%" margin="0 0 0 1em">
+                      <Box width="50%" margin="1em 0 0 1em">
                         <Button active link={opinions.pdf.fileURL}>
                           Anmeldeformular
                         </Button>
@@ -211,7 +214,7 @@ const Opinions: React.FC<Props> = () => {
                             <Box width="90%" height="90%" justify="between">
                               <Text
                                 color="black"
-                                size={isMobile ? '3em' : '4em'}
+                                size={isMobile ? '2em' : '4em'}
                                 textAlign="center"
                                 style={{ fontFamily: 'Roboto Mono', fontWeight: 600 }}
                               >

@@ -41,9 +41,9 @@ const Training = () => {
               trainers: results.items[0].fields['trainers'].map((trainer: any) => {
                 return {
                   name: trainer.fields['name'],
-                  age: trainer.fields['age'],
+                  addition: trainer.fields['age'],
                   description: trainer.fields['description'],
-                  image: 'https:' + trainer.fields['image'].fields['file'].url
+                  url: 'https:' + trainer.fields['image'].fields['file'].url
                 }
               })
             })

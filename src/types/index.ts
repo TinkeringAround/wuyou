@@ -1,7 +1,7 @@
 // ===============================================
 export type TTraining = {
   articles: Array<TArticle>
-  trainers: Array<TTrainer>
+  trainers: Array<TImage>
 }
 
 export type TArticle = {
@@ -13,7 +13,7 @@ export type TArticle = {
 
 export type TTrainer = {
   name: string
-  age: string
+  age?: string
   description: Array<string>
   image: string
 }
@@ -49,3 +49,14 @@ export type TPDF = {
 }
 
 // ===============================================
+export type TMedia = {
+  format: string
+  image: TImage
+}
+
+export type TImage = {
+  name: string
+  description: Array<string>
+  addition: string
+  url: string
+}

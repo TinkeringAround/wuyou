@@ -8,18 +8,6 @@ import { Simple } from '../../atoms/animation'
 import { close } from '../../atoms/icons'
 
 // ===============================================
-const DialogAnimation = posed.div({
-  exit: {
-    opacity: 0,
-    top: 0
-  },
-  enter: {
-    opacity: 1,
-    top: '5%'
-  }
-})
-
-// ===============================================
 interface Props {
   showDialog: boolean
   closeDialog: any
@@ -28,11 +16,24 @@ interface Props {
 
 // ===============================================
 const Dialog: React.FC<Props> = ({ children, showDialog, closeDialog, isMobile = false }) => {
+  // Animation
+  const DialogAnimation = posed.div({
+    exit: {
+      opacity: 0,
+      bottom: isMobile ? -50 : 0
+    },
+    enter: {
+      opacity: 1,
+      bottom: isMobile ? 0 : 50
+    }
+  })
+
   // Styles
   const iconSize = '35px'
 
   const dialog = {
-    top: '5%',
+    top: 'auto',
+    bottom: -50,
     left: isMobile ? 0 : '10%',
     width: isMobile ? '100%' : '80%',
     height: isMobile ? '95%' : '90%',
@@ -60,7 +61,7 @@ const Dialog: React.FC<Props> = ({ children, showDialog, closeDialog, isMobile =
     <Portal>
       <PoseGroup preEnterPose="exit">
         {showDialog && (
-          <DialogAnimation key="Dialog" className="absolute" style={dialog}>
+          <DialogAnimation key="Dialog" className="fixed" style={dialog}>
             <Box
               width="fit-content"
               height="fit-content"

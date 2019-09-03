@@ -5,7 +5,7 @@ import '../../../node_modules/react-lazy-load-image-component/src/effects/blur.c
 
 // Atoms:
 import { Simple } from '../../atoms/animation'
-import { TTrainer } from '../../types'
+import { TImage } from '../../types'
 
 // Custom Compontents:
 import Dialog from '../dialog'
@@ -13,8 +13,9 @@ import Dialog from '../dialog'
 // ===============================================
 interface Props {
   mode: 1 | 2 | 3 | 4 | 5 | 6
+  image: TImage
   fullsizeable?: boolean
-  data: TTrainer
+  small?: boolean
 }
 
 /*
@@ -30,8 +31,8 @@ Mobile
 */
 
 // ===============================================
-const Image: React.FC<Props> = ({ mode, fullsizeable = false, data }) => {
-  const { name, age, description, image } = data
+const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = false }) => {
+  const { name, description, addition, url } = image
   const [hover, setHover] = useState(false)
   const [showDialog, setShowDialog] = useState(false)
 
@@ -50,13 +51,11 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, data }) => {
   }
 
   const overlay = {
-    top: 'auto',
-    left: 'auto',
-    right: 'auto',
-    bottom: 'auto',
+    top: 0,
+    left: 0,
     zIndex: 1,
-    width: 'calc(100% - 19px)',
-    height: 'calc(100% - 19px)',
+    width: '100%', // ehemals calc(100% - 19px) TODO!
+    height: '100%', // ehemals calc(100% - 19px) TODO!
     backgroundColor: 'rgba(255, 255, 255, 0.85)',
 
     display: 'flex',
@@ -71,8 +70,8 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, data }) => {
   const title = {
     width: '85%',
     height: 'fit-content',
-    fontSize: isMobile ? '0.75em' : '1em',
-    margin: isMobile ? '0 auto 10px auto' : '0 auto 5px auto',
+    fontSize: isMobile ? (small ? '0.7em' : '1em') : small ? '0.8em' : '1.25em',
+    //margin: isMobile ? '0 auto 10px auto' : '0 auto 5px auto',
     lineHeight: 1.25,
     fontFamily: 'Roboto Mono'
   }
@@ -81,7 +80,7 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, data }) => {
     width: '85%',
     height: 'fit-content',
     fontWeight: 600,
-    fontSize: isMobile ? '0.5em' : '0.75em',
+    fontSize: isMobile ? (small ? '0.45em' : '0.65em') : small ? '0.6em' : '1em',
     lineHeight: 1.5
   }
   // #endregion
@@ -89,30 +88,24 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, data }) => {
   // Event Handlers
   useEffect(() => {
     setHover(false)
-  }, [data])
+  }, [image])
 
   return (
     <>
-      <Box className="relative" pad="10px" style={wrapper}>
+      <Box className="relative" pad={isMobile ? '5px' : '10px'} style={wrapper}>
         <Simple
           className="absolute"
           initialPose="hidden"
           pose={hover ? 'visible' : 'hidden'}
+          onTouchStart={() => setHover(!hover)}
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           onClick={fullsizeable ? () => setShowDialog(true) : undefined}
           style={overlay}
         >
-          <Box
-            width="100%"
-            height="100%"
-            direction="column"
-            justify="end"
-            align="center"
-            pad={{ bottom: isMobile ? '0.5em' : '1em' }}
-          >
+          <Box width="100%" height="100%" direction="column" justify="center" align="center">
             <Text textAlign="start" weight="bold" color="grey" style={title}>
-              {name + (age !== '' ? ',' + age : '')}
+              {name + (addition ? ',' + addition : '')}
             </Text>
             {description != null &&
               description.map((entry: string, index: number) => (
@@ -131,7 +124,7 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, data }) => {
         <LazyLoadImage
           alt={name}
           effect="blur"
-          src={image}
+          src={url}
           scrollPosition={false}
           visibleByDefault={false}
           width="100%"
@@ -145,7 +138,7 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, data }) => {
             <LazyLoadImage
               alt={name}
               effect="blur"
-              src={image}
+              src={url}
               scrollPosition={false}
               visibleByDefault={false}
               width="100%"

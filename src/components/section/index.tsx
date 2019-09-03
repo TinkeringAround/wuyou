@@ -26,12 +26,12 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
         const sectionLeft = isMobile
           ? {
               width: '90%',
-              height: textLeft ? 'auto' : '40vh',
+              height: textLeft ? 'auto' : '30vh',
               margin: 'auto'
             }
           : {
               width: textLeft ? '45%' : '40%',
-              height: '85%',
+              height: textLeft ? '85%' : '90%',
               left: '3%',
               bottom: 0
             }
@@ -39,12 +39,12 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
         const sectionRight = isMobile
           ? {
               width: '90%',
-              height: textLeft ? '40vh' : 'auto',
+              height: textLeft ? '30vh' : 'auto',
               margin: '2em auto'
             }
           : {
               width: textLeft ? '40%' : '45%',
-              height: '100%',
+              height: textLeft ? '90%' : '85%',
               right: '7%',
               top: 0
             }
@@ -53,34 +53,37 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph }) => {
         const text = (
           <Box width={isMobile ? '100%' : '90%'}>
             <Headline alignEnd={false} title={title} subtitle={subtitle} />
-            <Paragraph>{paragraph}</Paragraph>
+            <Paragraph size={isMobile ? '0.7em' : '0.8em'}>{paragraph}</Paragraph>
           </Box>
         )
 
         return (
-          <Box
-            className="relative"
-            justify="center"
-            align="center"
-            height={isMobile ? 'auto' : '80vh'}
-            direction="column"
-          >
+          <Box justify="center" align="center" height={isMobile ? 'auto' : '80vh'} pad="2%">
             <Box
-              className={(isMobile ? '' : 'absolute ') + (textLeft ? '' : 'overlay')}
-              background={textLeft ? 'transparent' : 'lightgrey'}
+              width="95%"
+              height="95%"
+              className="relative shadow"
+              direction="column"
+              justify="center"
               align="center"
-              style={sectionLeft}
             >
-              {textLeft ? text : ''}
-            </Box>
+              <Box
+                className={(isMobile ? '' : 'absolute ') + (textLeft ? '' : 'overlay')}
+                background={textLeft ? 'transparent' : 'lightgrey'}
+                align="center"
+                style={sectionLeft}
+              >
+                {textLeft ? text : ''}
+              </Box>
 
-            <Box
-              className={(isMobile ? '' : 'absolute ') + (textLeft ? 'overlay' : '')}
-              background={textLeft ? 'lightgrey' : 'transparent'}
-              align="end"
-              style={sectionRight}
-            >
-              {textLeft ? '' : text}
+              <Box
+                className={(isMobile ? '' : 'absolute ') + (textLeft ? 'overlay' : '')}
+                background={textLeft ? 'lightgrey' : 'transparent'}
+                align="end"
+                style={sectionRight}
+              >
+                {textLeft ? '' : text}
+              </Box>
             </Box>
           </Box>
         )

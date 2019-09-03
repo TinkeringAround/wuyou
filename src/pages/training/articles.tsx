@@ -30,7 +30,7 @@ const Articles: FC<Props> = ({ articles }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     afterChange: (currentSlide: number) => setCurrentSlide(currentSlide)
   }
@@ -62,7 +62,7 @@ const Articles: FC<Props> = ({ articles }) => {
               count={articles.length}
               currentSlide={currentSlide}
             />
-            <Spacer height="6em" />
+            <Spacer height={isMobile ? '3em' : '6em'} />
           </>
         )
       }}

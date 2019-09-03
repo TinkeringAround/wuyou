@@ -21,7 +21,7 @@ const Paragraph: React.FC<Props> = ({
       textAlign={textAlign}
       color="black"
       style={{
-        lineHeight: 2,
+        lineHeight: 1.8,
         letterSpacing: '0.01rem',
         paddingLeft: 6,
         paddingRight: 6,

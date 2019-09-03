@@ -20,14 +20,19 @@ const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
             level="1"
             margin="0"
             color="black"
-            size={isMobile ? '3em' : '6em'}
+            size={isMobile ? '2.5em' : '5em'}
             textAlign={alignEnd ? 'end' : 'start'}
             style={{ paddingRight: isMobile ? '0px' : '20px', lineHeight: 1 }}
           >
             {title}
           </Heading>
           {subtitle && subtitle !== '' && (
-            <Heading level="2" margin="0" size={isMobile ? '1em' : '2em'} style={{ opacity: 0.5 }}>
+            <Heading
+              level="2"
+              margin="0"
+              size={isMobile ? '1em' : '1.75em'}
+              style={{ opacity: 0.5 }}
+            >
               {subtitle}
             </Heading>
           )}
