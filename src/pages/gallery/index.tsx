@@ -9,7 +9,6 @@ import context from '../../contentful-context'
 
 // Custom Components
 import Image from '../../components/image'
-import LoadingSpinner from '../../components/loadingspinner'
 import Spacer from '../../components/spacer'
 
 // Utility:
@@ -24,7 +23,7 @@ interface Props {
 const Gallery: React.FC<Props> = ({ isMobile }) => {
   const { contentful } = useContext(context)
   const [media, setMedia] = useState<Array<TMedia>>([])
-  const [blocks, setBlocks] = useState<Array<any>>([])
+  const [sections, setSections] = useState<Array<JSX.Element>>([])
 
   // Fetch Images
   useEffect(() => {
@@ -49,35 +48,38 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
             setMedia(media)
           }
         })
-        .catch((error: any) => console.log(error))
+        .catch((error: any) => console.log('Gallery:', error))
     }
   })
 
-  // Create displayed Blocks
   useEffect(() => {
-    if (blocks.length === 0 && media.length > 0) {
-      // Tmps
+    if (media.length > 0 && sections.length === 0) {
+      let newSections: Array<JSX.Element> = []
+      let blocks: Array<JSX.Element> = []
+      let querModules: Array<JSX.Element> = []
+
+      // Tmps Arrays
       let hoch: Array<TImage> = []
       let quer: Array<TImage> = []
 
-      // Sortiere Blocks
+      // Sort Media
       media.forEach((media: TMedia) => {
         if (media.format === 'Hoch') hoch.push(media.image)
         else if (media.format === 'Quer') quer.push(media.image)
       })
 
-      let displayBlocks = hoch.map((item: TImage, index: number) => (
-        <Image
-          key={'Hoch' + item + index}
-          image={item}
-          mode={isMobile ? 6 : 2}
-          fullsizeable={!isMobile}
-        />
-      ))
+      // Desktop: Push "Hoch" elements
+      if (!isMobile) {
+        hoch.forEach((item: TImage, index: number) => {
+          blocks.push(
+            <Image key={'Hoch' + item + index} image={item} mode={2} fullsizeable={!isMobile} />
+          )
+        })
+      }
 
       quer = shuffle(quer)
-      let querModules = []
-      if (quer.length <= 4 || isMobile) {
+      if (quer.length <= 4) {
+        // simple "Quer" elements as modules
         quer.forEach((item: TImage, index: number) =>
           querModules.push(
             <Image
@@ -89,7 +91,7 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
           )
         )
       } else {
-        // nimm immer 4 und cluster zu einem Block
+        // take 4 "Quer" elements and cluster them as a module
         const quads = (quer.length - (quer.length % 4)) / 4
         for (let index = 0; index < quads; index++)
           querModules.push(
@@ -125,7 +127,7 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
             </Box>
           )
 
-        // restliche jeweils als einzelner Block
+        // the leftovers "Quer" elements as simple modules
         if (quer.length % 4 > 0) {
           for (let index = 0; index < quer.length % 4; index++)
             querModules.push(
@@ -139,16 +141,10 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
         }
       }
 
-      // mach Blöcke aus den querModules
+      // create displayBlocks out of the "Quer" modules
       for (let index = 0; index < (querModules.length - (querModules.length % 2)) / 2; index++) {
-        displayBlocks.push(
-          <Box
-            key={'Row' + index}
-            width={isMobile ? '100%' : '50%'}
-            height="100%"
-            direction="row"
-            wrap
-          >
+        blocks.push(
+          <Box width={isMobile ? '100%' : '50%'} height="100%" direction="row" wrap>
             {querModules[index * 2]}
             {querModules[index * 2 + 1]}
           </Box>
@@ -156,35 +152,60 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
       }
 
       // Shuffle DisplayBlocks
-      displayBlocks = shuffle(displayBlocks)
+      blocks = shuffle(blocks)
 
-      // wenn QuerModules ungerade ist -> ein Block ist alleine, soll der letzte sein
-      if (querModules.length % 2 === 1) {
-        displayBlocks.push(
-          <Box key="last" width={isMobile ? '100%' : '50%'} height="100%" direction="row" wrap>
-            {querModules[querModules.length - 1]}
-          </Box>
-        )
+      // finalize blocks in order to render them under each other as sections
+      if (!isMobile) {
+        for (let i = 0; i < blocks.length; i += 2) {
+          newSections.push(
+            <Box
+              key={'Section' + i}
+              width={isMobile ? '95%' : '85%'}
+              height="100%"
+              margin="0 auto"
+              direction="row"
+              wrap
+            >
+              {blocks[i]}
+              {blocks[i + 1]}
+            </Box>
+          )
+        }
+      } else {
+        for (let i = 0; i < blocks.length; i++) {
+          newSections.push(
+            <Box key={'Section' + i} width="95%" height="100%" margin="0 auto">
+              {blocks[i]}
+            </Box>
+          )
+        }
       }
-      if (isMobile) displayBlocks = displayBlocks.slice(0, displayBlocks.length / 2)
-      setBlocks(displayBlocks)
+
+      // on mobile, "Hoch" elements should be treated as finished sections
+      if (isMobile) {
+        hoch.forEach((item: TImage, index: number) => {
+          newSections.push(
+            <Box key={'HochSection' + item + index} width="95%" height="80%" margin="0 auto">
+              <Image image={item} mode={isMobile ? 6 : 2} fullsizeable={!isMobile} />
+            </Box>
+          )
+        })
+      }
+
+      // Shuffle Twice
+      newSections = shuffle(newSections)
+      newSections = shuffle(newSections)
+
+      setSections(newSections)
     }
   }, [media])
 
   return (
     <>
-      {blocks.length === 0 ? (
-        <Box width="100%" height="50vh">
-          <LoadingSpinner size={isMobile ? 'medium' : 'normal'} />
-        </Box>
-      ) : (
+      {media.length > 0 && sections.length > 0 && (
         <>
-          {isMobile && <Spacer height="5em" />}
-          <Box width="100%" height="100%">
-            <Box width={isMobile ? '95%' : '80%'} height="80%" margin="auto" direction="row" wrap>
-              {blocks}
-            </Box>
-          </Box>
+          <Spacer height="5em" />
+          {sections}
           <Spacer height="5em" />
         </>
       )}

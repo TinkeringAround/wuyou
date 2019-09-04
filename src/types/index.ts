@@ -60,3 +60,16 @@ export type TImage = {
   addition: string
   url: string
 }
+
+// ===============================================
+export type TPosition = {
+  address: Array<string>
+  days: Array<string>
+  descriptions: Array<string>
+  times: Array<string>
+  titles: Array<string>
+  trainers: Array<string>
+  map: string
+  mapMobile: string
+  url: string
+}

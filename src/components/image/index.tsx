@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Text } from 'grommet'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import '../../../node_modules/react-lazy-load-image-component/src/effects/blur.css'
+import '../../../node_modules/react-lazy-load-image-component/src/effects/opacity.css'
 
 // Atoms:
 import { Simple } from '../../atoms/animation'
@@ -54,8 +54,8 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
     top: 'auto',
     left: 'auto',
     zIndex: 1,
-    width: 'calc(100% - 19px)',
-    height: 'calc(100% - 19px)',
+    width: 'calc(100% - ' + (isMobile ? '9px)' : '19px)'),
+    height: 'calc(100% - ' + (isMobile ? '9px)' : '19px)'),
     backgroundColor: 'rgba(255, 255, 255, 0.85)',
 
     display: 'flex',
@@ -69,7 +69,6 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
 
   const title = {
     width: '85%',
-    height: 'fit-content',
     fontSize: isMobile ? (small ? '0.7em' : '1em') : small ? '0.8em' : '1.25em',
     lineHeight: 1.25,
     fontFamily: 'Roboto Mono'
@@ -77,7 +76,6 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
 
   const line = {
     width: '85%',
-    height: 'fit-content',
     fontWeight: 600,
     fontSize: isMobile ? (small ? '0.45em' : '0.65em') : small ? '0.6em' : '1em',
     lineHeight: 1.5
@@ -97,6 +95,7 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
           initialPose="hidden"
           pose={hover ? 'visible' : 'hidden'}
           onTouchStart={() => setHover(!hover)}
+          onTouchEnd={() => setHover(!hover)}
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           onClick={fullsizeable ? () => setShowDialog(true) : undefined}
@@ -122,7 +121,7 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
         </Simple>
         <LazyLoadImage
           alt={name}
-          effect="blur"
+          effect="opacity"
           src={url}
           scrollPosition={false}
           visibleByDefault={false}

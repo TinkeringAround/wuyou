@@ -13,7 +13,6 @@ import Button from '../../atoms/button'
 import Paragraph from '../../atoms/paragraph'
 
 // Custom Components
-import LoadingSpinner from '../../components/loadingspinner'
 import Dialog from '../../components/dialog'
 import Spacer from '../../components/spacer'
 
@@ -94,24 +93,19 @@ const Opinions: React.FC<Props> = () => {
 
         return (
           <>
-            {opinions == null ? (
-              <Box width="100%" height="50vh">
-                <LoadingSpinner size={isMobile ? 'medium' : 'normal'} />
-              </Box>
-            ) : (
+            {opinions && (
               <>
-                <Spacer height="100px" />
-                <Box width="100%">
+                <Spacer height={isMobile ? '50px' : '100px'} />
+                <Box width="100%" align="center">
                   <Box
-                    width="90%"
-                    justify="center"
-                    align="center"
-                    margin={'0 auto' + (isMobile ? '1em' : '1.5em') + ' auto'}
+                    width={isMobile ? '90%' : '85%'}
+                    height={isMobile ? '30%' : '20%'}
+                    margin="0 auto"
                   >
                     <Headline alignEnd={false} title="Meinungen." />
                   </Box>
                   <Box
-                    width={isMobile ? '100%' : '90%'}
+                    width={isMobile ? '95%' : '85%'}
                     margin={isMobile ? '0' : '4em auto 8em auto'}
                     justify={isMobile ? 'center' : 'between'}
                     align="start"

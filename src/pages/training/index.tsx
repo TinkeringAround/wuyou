@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Box, ResponsiveContext } from 'grommet'
 
 // Types:
 import { TTraining } from '../../types'
 
 // Context
 import context from '../../contentful-context'
-
-// Custom Components
-import LoadingSpinner from '../../components/loadingspinner'
 
 // Partials:
 import Articles from './articles'
@@ -54,26 +50,14 @@ const Training = () => {
   }, [contentful])
 
   return (
-    <ResponsiveContext.Consumer>
-      {size => {
-        const isMobile = size.includes('small')
-
-        return (
-          <>
-            {training == null ? (
-              <Box height="100vh">
-                <LoadingSpinner size={isMobile ? 'medium' : 'normal'} />
-              </Box>
-            ) : (
-              <>
-                <Articles articles={training.articles} />
-                <Trainerteam trainers={training.trainers} />
-              </>
-            )}
-          </>
-        )
-      }}
-    </ResponsiveContext.Consumer>
+    <>
+      {training && (
+        <>
+          <Articles articles={training.articles} />
+          <Trainerteam trainers={training.trainers} />
+        </>
+      )}
+    </>
   )
 }
 

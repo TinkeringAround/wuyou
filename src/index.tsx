@@ -16,6 +16,7 @@ import Home from './pages/home/'
 import Training from './pages/training'
 import Opinions from './pages/opinions'
 import Gallery from './pages/gallery'
+import Contact from './pages/contact'
 
 // Components:
 import Navigation from './components/navigation/'
@@ -47,6 +48,7 @@ const App = () => {
                 <Training />
                 <Opinions />
                 <Gallery isMobile={isMobile} />
+                <Contact />
               </>
             )
           }}
