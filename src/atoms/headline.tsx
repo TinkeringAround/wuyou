@@ -15,14 +15,14 @@ const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
       const isMobile = size.includes('small')
 
       return (
-        <Box margin="0.75em 0 0 4px">
+        <Box margin="0.75em 0 0 4px" align={alignEnd ? 'end' : 'start'}>
           <Heading
             level="1"
             margin="0"
             color="black"
             size={isMobile ? '2.5em' : '5em'}
             textAlign={alignEnd ? 'end' : 'start'}
-            style={{ paddingRight: isMobile ? '0px' : '20px', lineHeight: 1 }}
+            style={{ paddingRight: isMobile || alignEnd ? '0px' : '20px', lineHeight: 1 }}
           >
             {title}
           </Heading>

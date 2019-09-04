@@ -52,15 +52,17 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => {
         // Components
         const text = (
           <Box width={isMobile ? '100%' : '90%'}>
-            <Headline alignEnd={false} title={title} subtitle={subtitle} />
-            <Paragraph size={isMobile ? '0.7em' : '0.8em'}>{paragraph}</Paragraph>
+            <Headline alignEnd={!textLeft} title={title} subtitle={subtitle} />
+            <Paragraph size={isMobile ? '0.7em' : '0.8em'} textAlign={textLeft ? 'start' : 'end'}>
+              {paragraph}
+            </Paragraph>
           </Box>
         )
 
         const image = (
           <LazyLoadImage
             alt={title}
-            effect="blur"
+            effect="opacity"
             src={url}
             scrollPosition={false}
             visibleByDefault={false}
