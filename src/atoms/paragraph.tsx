@@ -6,6 +6,7 @@ interface Props {
   size?: string
   textAlign?: 'start' | 'end' | 'center'
   margin?: string
+  noPadding?: boolean
 }
 
 // ===============================================
@@ -13,7 +14,8 @@ const Paragraph: React.FC<Props> = ({
   children,
   size = '0.9em',
   textAlign = 'start',
-  margin = '1.5em 0 0.5em 0'
+  margin = '1.5em 0 0.5em 0',
+  noPadding = false
 }) => {
   return (
     <Text
@@ -23,8 +25,8 @@ const Paragraph: React.FC<Props> = ({
       style={{
         lineHeight: 1.8,
         letterSpacing: '0.01rem',
-        paddingLeft: 6,
-        paddingRight: 6,
+        paddingLeft: noPadding ? 0 : 6,
+        paddingRight: noPadding ? 0 : 6,
         margin: margin
       }}
     >
