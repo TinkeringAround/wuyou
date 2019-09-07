@@ -9,7 +9,6 @@ import '../../../node_modules/slick-carousel/slick/slick-theme.css'
 // Custom Components:
 import Section from '../../components/section'
 import Pagination from '../../components/pagination'
-import Spacer from '../../components/spacer'
 
 // ===============================================
 interface Props {
@@ -41,7 +40,6 @@ const Articles: FC<Props> = ({ articles }) => {
         const isMobile = size.includes('small')
         return (
           <>
-            <Spacer height={isMobile ? '2em' : '6em'} />
             <Slider ref={sliderRef => setSlider(sliderRef)} {...settings}>
               {articles != null &&
                 articles.map((article, articleIndex) => (
@@ -63,7 +61,6 @@ const Articles: FC<Props> = ({ articles }) => {
               count={articles.length}
               currentSlide={currentSlide}
             />
-            <Spacer height={isMobile ? '3em' : '6em'} />
           </>
         )
       }}

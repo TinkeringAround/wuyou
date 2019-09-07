@@ -33,7 +33,7 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => {
               width: textLeft ? '45%' : '40%',
               height: textLeft ? '85%' : '90%',
               left: '3%',
-              bottom: 0
+              bottom: '5%'
             }
 
         const sectionRight = isMobile
@@ -46,7 +46,7 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => {
               width: textLeft ? '40%' : '45%',
               height: textLeft ? '90%' : '85%',
               right: '7%',
-              top: 0
+              top: '5%'
             }
 
         // Components

@@ -73,3 +73,25 @@ export type TPosition = {
   mapMobile: string
   url: string
 }
+
+// ===============================================
+export type TFooter = {
+  imprint: TDocument | null
+  datasecurity: TDocument | null
+}
+
+export type TDocument = {
+  title: string
+  chapters: Array<TChapter>
+  data: TData | null
+}
+
+export type TChapter = {
+  title: string
+  paragraph: string
+}
+
+export type TData = {
+  title: string
+  url: string
+}

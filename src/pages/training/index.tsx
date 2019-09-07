@@ -10,6 +10,10 @@ import context from '../../contentful-context'
 import Articles from './articles'
 import Trainerteam from './trainers'
 
+// Components
+import Spacer from '../../components/spacer'
+import { ResponsiveContext } from 'grommet'
+
 // ===============================================
 const Training = () => {
   const { contentful } = useContext(context)
@@ -52,10 +56,15 @@ const Training = () => {
   return (
     <>
       {training && (
-        <>
-          <Articles articles={training.articles} />
-          <Trainerteam trainers={training.trainers} />
-        </>
+        <ResponsiveContext.Consumer>
+          {size => (
+            <>
+              <Spacer height={size.includes('small') ? '2em' : '6em'} />
+              <Articles articles={training.articles} />
+              <Trainerteam trainers={training.trainers} />
+            </>
+          )}
+        </ResponsiveContext.Consumer>
       )}
     </>
   )

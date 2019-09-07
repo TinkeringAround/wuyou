@@ -20,6 +20,7 @@ import Contact from './pages/contact'
 
 // Components:
 import Navigation from './components/navigation/'
+import Footer from './components/footer/'
 
 // Sentry Init
 Sentry.init({ dsn: 'https://1d28a670ef5d470da5b18d8b755e9b10@sentry.io/1515723' })
@@ -49,6 +50,7 @@ const App = () => {
                 <Opinions />
                 <Gallery isMobile={isMobile} />
                 <Contact />
+                <Footer />
               </>
             )
           }}

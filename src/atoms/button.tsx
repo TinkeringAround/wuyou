@@ -1,55 +1,36 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button as GrommetButton, Box, Text, ResponsiveContext } from 'grommet'
-import posed from 'react-pose'
 
 // Theme
 import theme from '../styles/theme'
 
 // ===============================================
-const Animation = posed.div({
-  hidden: { width: 0 },
-  visible: {
-    width: '110%',
-    transition: { duration: 500 }
-  }
-})
-
-const button = {
-  display: 'block',
-  transition: 'all 0.2s'
-}
-
-const overlay = {
-  top: 0,
-  left: '-5%',
-  height: '100%',
-  zIndex: 1,
-  backgroundColor: theme.global.colors.red
-}
-
-const text = {
-  fontFamily: 'Roboto Mono',
-  transition: 'all 1s',
-  zIndex: 2
-}
-
-// ===============================================
 interface Props {
   onClick?: any
-  active?: boolean
-  link?: string | null
+  fontSize?: string
   textAlign?: 'start' | 'center' | 'end'
+  link?: string | null
 }
 
 // ===============================================
 const Button: React.FC<Props> = ({
   children,
   onClick,
-  active = false,
+  fontSize,
   link = null,
   textAlign = 'start'
 }) => {
-  const [hover, setHover] = useState(false)
+  const button = {
+    backgroundColor: theme.global.colors.red,
+    display: 'block',
+    transition: 'all 0.2s'
+  }
+
+  const text = {
+    fontFamily: 'Roboto Mono',
+    transition: 'all 1s',
+    zIndex: 2
+  }
 
   return (
     <ResponsiveContext.Consumer>
@@ -58,32 +39,24 @@ const Button: React.FC<Props> = ({
 
         return (
           <GrommetButton
-            className="relative"
+            className="relative zoomOnHover"
             style={button}
             margin="0"
             onClick={onClick}
-            onMouseOver={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
             target={link ? '_blank' : undefined}
             href={link ? link : undefined}
           >
             <Box justify="center" height="fit-content" width="100%">
               <Text
-                size={isMobile ? '0.8em' : '1.25em'}
+                size={fontSize ? fontSize : isMobile ? '0.8em' : '1.25em'}
                 weight="bold"
                 textAlign={textAlign}
-                color={hover || active ? theme.global.colors.white : theme.global.colors.black}
+                color={theme.global.colors.white}
                 style={{ padding: isMobile ? '1em' : '0.75em', ...text }}
               >
                 {children}
               </Text>
             </Box>
-            <Animation
-              initialPose="hidden"
-              pose={hover || active ? 'visible' : 'hidden'}
-              className="absolute"
-              style={overlay}
-            />
           </GrommetButton>
         )
       }}

@@ -204,9 +204,8 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
     <>
       {media.length > 0 && sections.length > 0 && (
         <>
-          <Spacer height="5em" />
+          <Spacer id="gallery" height="5em" />
           {sections}
-          <Spacer height="5em" />
         </>
       )}
     </>

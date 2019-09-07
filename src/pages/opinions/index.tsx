@@ -95,7 +95,7 @@ const Opinions: React.FC<Props> = () => {
           <>
             {opinions && (
               <>
-                <Spacer height={isMobile ? '50px' : '100px'} />
+                <Spacer id="opinions" height={isMobile ? '50px' : '100px'} />
                 <Box width="100%" align="center">
                   <Box
                     width={isMobile ? '90%' : '85%'}
@@ -147,7 +147,7 @@ const Opinions: React.FC<Props> = () => {
                         </Paragraph>
                       </Box>
                       <Box width={isMobile ? '90%' : '50%'}>
-                        <Button active onClick={() => setShow(true)} textAlign="center">
+                        <Button onClick={() => setShow(true)} textAlign="center">
                           Preisliste für eine Mitgliedschaft
                         </Button>
                       </Box>
@@ -178,10 +178,8 @@ const Opinions: React.FC<Props> = () => {
                       >
                         {opinions.pdf.description}
                       </Paragraph>
-                      <Box width="50%" margin="1em 0 0 1em">
-                        <Button active link={opinions.pdf.fileURL}>
-                          Anmeldeformular
-                        </Button>
+                      <Box width="50%" margin="0">
+                        <Button link={opinions.pdf.fileURL}>Anmeldeformular</Button>
                       </Box>
                     </Box>
                     <Box
