@@ -5,7 +5,7 @@ const theme = {
         value: 500
       },
       small: {
-        value: 950
+        value: 980
       },
       medium: {
         value: 1200

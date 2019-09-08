@@ -40,11 +40,16 @@ body {
 }
 
 /* Effects */
+.animation {
+  transition: 0.25s ease;
+}
+
 .overlay {
   transition: 0.25s ease;
 }
 
 .zoomOnHover {
+  cursor: pointer;
   transition: 0.25s ease;
 }
 
@@ -96,18 +101,16 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: var(--lightGrey);
-  border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
-  width: 9px !important;
-  height: 9px !important;
+  width: 9px;
+  height: 9px;
   background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: grey;
-  border-radius: 10px;
+  background-color: var(--red);
 }
 
 ::-webkit-scrollbar-thumb:hover {

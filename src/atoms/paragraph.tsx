@@ -7,6 +7,7 @@ interface Props {
   textAlign?: 'start' | 'end' | 'center'
   margin?: string
   noPadding?: boolean
+  overflow?: 'auto' | 'hidden' | 'scroll' | 'visible'
 }
 
 // ===============================================
@@ -15,6 +16,7 @@ const Paragraph: React.FC<Props> = ({
   size = '0.9em',
   textAlign = 'start',
   margin = '1.5em 0 0.5em 0',
+  overflow = 'visible',
   noPadding = false
 }) => {
   return (
@@ -27,7 +29,8 @@ const Paragraph: React.FC<Props> = ({
         letterSpacing: '0.01rem',
         paddingLeft: noPadding ? 0 : 6,
         paddingRight: noPadding ? 0 : 6,
-        margin: margin
+        margin: margin,
+        overflowY: overflow
       }}
     >
       {children}

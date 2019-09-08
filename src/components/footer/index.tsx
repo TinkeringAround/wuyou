@@ -123,7 +123,7 @@ const Footer: React.FC<Props> = () => {
                     align="center"
                     background="red"
                   >
-                    <a href={mailToWuyou} target="_blank" style={a}>
+                    <a href={mailToWuyou} target="_blank" rel="noopener noreferrer" style={a}>
                       <svg width={icon} height={icon} viewBox={email.viewport}>
                         {email.path}
                       </svg>
@@ -138,7 +138,7 @@ const Footer: React.FC<Props> = () => {
                     align="center"
                     background="red"
                   >
-                    <a href={linkToFacebook} target="_blank" style={a}>
+                    <a href={linkToFacebook} target="_blank" rel="noopener noreferrer" style={a}>
                       <svg width={icon} height={icon} viewBox={facebook.viewport}>
                         {facebook.path}
                       </svg>
@@ -153,7 +153,7 @@ const Footer: React.FC<Props> = () => {
                     align="center"
                     background="red"
                   >
-                    <a href={linktToYoutube} target="_blank" style={a}>
+                    <a href={linktToYoutube} target="_blank" rel="noopener noreferrer" style={a}>
                       <svg width={icon} height={icon} viewBox={youtube.viewport}>
                         {youtube.path}
                       </svg>

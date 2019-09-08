@@ -19,7 +19,7 @@ import Spacer from '../../components/spacer'
 interface Props {}
 
 // ===============================================
-const Contact: React.FC<Props> = () => {
+const Position: React.FC<Props> = () => {
   const { contentful } = useContext(context)
   const [position, setPosition] = useState<TPosition | null>(null)
 
@@ -187,4 +187,4 @@ const Contact: React.FC<Props> = () => {
   )
 }
 
-export default Contact
+export default Position

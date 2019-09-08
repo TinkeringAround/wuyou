@@ -10,6 +10,7 @@ const Home: FC = () => {
 
         return (
           <Box
+            id="home"
             width="100%"
             height={window.innerHeight - 100 + 'px'}
             justify="center"

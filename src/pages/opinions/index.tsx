@@ -178,7 +178,7 @@ const Opinions: React.FC<Props> = () => {
                       >
                         {opinions.pdf.description}
                       </Paragraph>
-                      <Box width="50%" margin="0">
+                      <Box width="50%" margin={isMobile ? '1em 0 0 0' : '0.5em 0 0 0'}>
                         <Button link={opinions.pdf.fileURL}>Anmeldeformular</Button>
                       </Box>
                     </Box>

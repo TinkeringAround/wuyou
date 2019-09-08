@@ -53,7 +53,11 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => {
         const text = (
           <Box width={isMobile ? '100%' : '90%'}>
             <Headline alignEnd={!textLeft} title={title} subtitle={subtitle} />
-            <Paragraph size={isMobile ? '0.7em' : '0.8em'} textAlign={textLeft ? 'start' : 'end'}>
+            <Paragraph
+              size={isMobile ? '0.7em' : '0.8em'}
+              textAlign={textLeft ? 'start' : 'end'}
+              overflow="auto"
+            >
               {paragraph}
             </Paragraph>
           </Box>

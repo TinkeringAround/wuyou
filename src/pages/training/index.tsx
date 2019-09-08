@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { ResponsiveContext, Box } from 'grommet'
 
 // Types:
 import { TTraining } from '../../types'
@@ -12,7 +13,6 @@ import Trainerteam from './trainers'
 
 // Components
 import Spacer from '../../components/spacer'
-import { ResponsiveContext } from 'grommet'
 
 // ===============================================
 const Training = () => {
@@ -59,7 +59,7 @@ const Training = () => {
         <ResponsiveContext.Consumer>
           {size => (
             <>
-              <Spacer height={size.includes('small') ? '2em' : '6em'} />
+              <Spacer id="training" height={size.includes('small') ? '2em' : '6em'} />
               <Articles articles={training.articles} />
               <Trainerteam trainers={training.trainers} />
             </>
