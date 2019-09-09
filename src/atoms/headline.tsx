@@ -6,13 +6,18 @@ interface Props {
   alignEnd?: boolean
   title: string
   subtitle?: string
+  tSize?: string | null
+  sSize?: string | null
 }
 
 // ===============================================
-const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
+const Headline: FC<Props> = ({ alignEnd = false, title, subtitle, tSize = null, sSize = null }) => (
   <ResponsiveContext.Consumer>
     {size => {
       const isMobile = size.includes('small')
+
+      const titleSize = tSize ? tSize : isMobile ? '2.5em' : '5em'
+      const subtitleSize = sSize ? sSize : isMobile ? '1em' : '1.75em'
 
       return (
         <Box margin="0.75em 0 0 4px" align={alignEnd ? 'end' : 'start'}>
@@ -20,19 +25,14 @@ const Headline: FC<Props> = ({ alignEnd = false, title, subtitle }) => (
             level="1"
             margin="0"
             color="black"
-            size={isMobile ? '2.5em' : '5em'}
+            size={titleSize}
             textAlign={alignEnd ? 'end' : 'start'}
             style={{ paddingRight: isMobile || alignEnd ? '0px' : '20px', lineHeight: 1 }}
           >
             {title}
           </Heading>
           {subtitle && subtitle !== '' && (
-            <Heading
-              level="2"
-              margin="0"
-              size={isMobile ? '1em' : '1.75em'}
-              style={{ opacity: 0.5 }}
-            >
+            <Heading level="2" margin="0" size={subtitleSize} style={{ opacity: 0.5 }}>
               {subtitle}
             </Heading>
           )}

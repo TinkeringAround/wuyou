@@ -59,7 +59,10 @@ const Position: React.FC<Props> = () => {
             {position && (
               <>
                 <Spacer id="position" height={isMobile ? '5em' : '8em'} />
-                <Box width={isMobile ? '90%' : '85%'} margin="0 auto 2em auto">
+                <Box
+                  width={isMobile ? '90%' : '85%'}
+                  margin={isMobile ? '0 auto 1em auto' : '0 auto 3em auto'}
+                >
                   <Headline alignEnd={false} title="Anfahrt und Zeiten." />
                 </Box>
                 <Box width={isMobile ? '90%' : '85%'} margin="0 auto 1em auto">
@@ -140,7 +143,7 @@ const Position: React.FC<Props> = () => {
                   >
                     <Box
                       className="absolute"
-                      background="rgba(255,255,255,0.9)"
+                      background={isMobile ? 'rgba(255,255,255,0.9)' : 'white'}
                       pad="1.5em"
                       width={isMobile ? '80%' : 'auto'}
                       style={{
@@ -163,7 +166,7 @@ const Position: React.FC<Props> = () => {
                           key={'Position-' + index}
                           margin="0.2em 0 0 0"
                           noPadding
-                          size={isMobile ? '0.8em' : '0.9em'}
+                          size={isMobile ? '0.7em' : '0.9em'}
                         >
                           {address}
                         </Paragraph>

@@ -8,7 +8,7 @@ const theme = {
         value: 980
       },
       medium: {
-        value: 1200
+        value: 1500
       },
       middle: {
         value: 1500

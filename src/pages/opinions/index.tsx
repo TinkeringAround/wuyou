@@ -95,7 +95,7 @@ const Opinions: React.FC<Props> = () => {
           <>
             {opinions && (
               <>
-                <Spacer id="opinions" height={isMobile ? '50px' : '100px'} />
+                <Spacer id="opinions" height={isMobile ? '1px' : '100px'} />
                 <Box width="100%" align="center">
                   <Box
                     width={isMobile ? '90%' : '85%'}

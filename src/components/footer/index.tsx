@@ -108,7 +108,12 @@ const Footer: React.FC<Props> = () => {
                 align="center"
                 margin="0"
               >
-                <Box className="zoomOnHover" height="50%" justify="center" align="center">
+                <Box
+                  className={isMobile ? '' : 'zoomOnHover'}
+                  height="50%"
+                  justify="center"
+                  align="center"
+                >
                   <Box height="50%">
                     <Image fit="contain" src={logo} />
                   </Box>

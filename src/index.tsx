@@ -34,6 +34,7 @@ const contentfulClient = require('contentful').createClient({
 
 // Consts:
 const NAVIGATION = 200
+const TOLERANCE = 25
 
 // ===============================================
 const App = () => {
@@ -50,9 +51,9 @@ const App = () => {
           //@ts-ignore
           if (event.target.id === 'grommet') {
             //@ts-ignore
-            if (event.target.scrollTop > NAVIGATION) setScroll(true)
+            if (event.target.scrollTop > NAVIGATION + TOLERANCE) setScroll(true)
             //@ts-ignore
-            else if (event.target.scrollTop <= NAVIGATION) setScroll(false)
+            else if (event.target.scrollTop < NAVIGATION - TOLERANCE) setScroll(false)
           }
         }}
       >
