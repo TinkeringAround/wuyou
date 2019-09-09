@@ -59,40 +59,10 @@ const Position: React.FC<Props> = () => {
             {position && (
               <>
                 <Spacer id="position" height={isMobile ? '5em' : '8em'} />
-                <Box
-                  width={isMobile ? '90%' : '85%'}
-                  height={isMobile ? '25%' : '20%'}
-                  margin="0 auto"
-                >
+                <Box width={isMobile ? '90%' : '85%'} margin="0 auto 2em auto">
                   <Headline alignEnd={false} title="Anfahrt und Zeiten." />
                 </Box>
                 <Box width={isMobile ? '90%' : '85%'} margin="0 auto 1em auto">
-                  <Box width="100%">
-                    <Heading
-                      level="3"
-                      color="black"
-                      size={isMobile ? '1.25em' : '2em'}
-                      margin="0"
-                      style={{ fontFamily: 'Roboto Mono' }}
-                    >
-                      Trainingsort:
-                    </Heading>
-                    {position.address.map((address: string, index: number) => (
-                      <Paragraph key={'Position-' + index} margin="0.2em 0 0 0" noPadding>
-                        {address}
-                      </Paragraph>
-                    ))}
-                    <Heading
-                      level="3"
-                      color="black"
-                      size={isMobile ? '1.25em' : '2em'}
-                      margin="1em 0 0 0"
-                      style={{ fontFamily: 'Roboto Mono' }}
-                    >
-                      Trainingszeiten:
-                    </Heading>
-                  </Box>
-
                   <Box
                     width="100%"
                     direction={isMobile ? 'column' : 'row'}
@@ -155,18 +125,52 @@ const Position: React.FC<Props> = () => {
                     })}
                   </Box>
                 </Box>
+
                 <Box
                   width="100%"
                   height={isMobile ? '300px' : '500px'}
                   margin={isMobile ? '2em auto 0 auto' : '4em auto 0 auto'}
                 >
                   <a
+                    className="relative"
                     href={position.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ width: '100%', height: '100%', display: 'block' }}
                   >
+                    <Box
+                      className="absolute"
+                      background="rgba(255,255,255,0.9)"
+                      pad="1.5em"
+                      width={isMobile ? '80%' : 'auto'}
+                      style={{
+                        zIndex: 5,
+                        bottom: isMobile ? '15%' : '10%',
+                        right: isMobile ? '10%' : '5%'
+                      }}
+                    >
+                      <Heading
+                        level="3"
+                        color="black"
+                        size={isMobile ? '1.25em' : '2em'}
+                        margin="0"
+                        style={{ fontFamily: 'Roboto Mono' }}
+                      >
+                        Trainingsort
+                      </Heading>
+                      {position.address.map((address: string, index: number) => (
+                        <Paragraph
+                          key={'Position-' + index}
+                          margin="0.2em 0 0 0"
+                          noPadding
+                          size={isMobile ? '0.8em' : '0.9em'}
+                        >
+                          {address}
+                        </Paragraph>
+                      ))}
+                    </Box>
                     <LazyLoadImage
+                      className="whiteShadow"
                       alt="Anfahrt zum Wuyou e.V."
                       effect="opacity"
                       src={isMobile ? position.mapMobile : position.map}

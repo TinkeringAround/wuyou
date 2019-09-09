@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Box, Heading, ResponsiveContext, Image } from 'grommet'
+import { Box, Heading, ResponsiveContext, Image, Text } from 'grommet'
 
 // Types
 import { TDocument, TChapter, TFooter } from '../../types'
@@ -108,11 +108,21 @@ const Footer: React.FC<Props> = () => {
                 align="center"
                 margin="0"
               >
-                <Box height="50%" justify="center" align="center">
+                <Box className="zoomOnHover" height="50%" justify="center" align="center">
                   <Box height="50%">
                     <Image fit="contain" src={logo} />
                   </Box>
+                  <Text
+                    textAlign="center"
+                    color="black"
+                    size="1.25em"
+                    margin="0.25em 0"
+                    style={{ fontFamily: 'Roboto Mono', fontWeight: 600 }}
+                  >
+                    Wushu.Taiji.Fitness.
+                  </Text>
                 </Box>
+
                 <Box height="30%" justify="center" align="start" direction="row">
                   <Box
                     className="zoomOnHover"

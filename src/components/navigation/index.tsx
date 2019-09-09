@@ -26,8 +26,8 @@ const OverlayItem = posed.div({
 })
 
 // Pages
-const pages = ['Wuyou', 'Training', 'Meinungen', 'Gallerie', 'Anfahrt', 'Kontakt']
-const ids = ['home', 'training', 'opinions', 'gallery', 'position', 'contact']
+const pages = ['Training', 'Meinungen', 'Gallerie', 'Anfahrt', 'Kontakt']
+const ids = ['training', 'opinions', 'gallery', 'position', 'contact']
 
 // ===============================================
 interface Props {
@@ -44,7 +44,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
     zIndex: 800,
 
     width: '100vw',
-    height: '100vh',
+    height: window.innerHeight,
 
     backgroundColor: 'white'
   }
@@ -55,8 +55,8 @@ const Navigation: FC<Props> = ({ scrolled }) => {
         const isMobile = size.includes('small')
         const isMedium = size.includes('medium')
 
-        const title = scrolled ? (isMedium ? '1.3em' : '1.5em') : isMedium ? '1em' : '1.75em'
-        const subtitle = scrolled ? (isMedium ? '0.75em' : '1em') : isMedium ? '0.9em' : '1.25em'
+        const title = scrolled ? (isMedium ? '1.3em' : '1.5em') : isMedium ? '1.5em' : '1.75em'
+        const subtitle = scrolled ? (isMedium ? '0.7em' : '1em') : isMedium ? '0.8em' : '1.25em'
         const icon = '90%'
 
         const listitem = {
@@ -66,6 +66,16 @@ const Navigation: FC<Props> = ({ scrolled }) => {
           fontFamily: 'Roboto Mono',
           margin: '0 0.75em',
           cursor: 'pointer'
+        }
+
+        const number = {
+          fontFamily: 'Roboto Mono',
+          fontSize: '1em'
+        }
+        const page = {
+          fontFamily: 'Roboto Mono',
+          fontSize: '2em',
+          fontWeight: 600
         }
 
         return (
@@ -86,7 +96,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
             >
               <Box
                 className="zoomOnHover"
-                width={isMobile ? '30%' : '10%'}
+                width={isMobile ? (scrolled ? '30%' : '40%') : '10%'}
                 height="80%"
                 onClick={() => {
                   const home = document.getElementById('home')
@@ -124,13 +134,13 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                 </Box>
               )}
               <Box
-                width={isMobile ? '70%' : '50%'}
+                width={isMobile ? (scrolled ? '70%' : '60%') : '50%'}
                 height="80%"
                 justify={isMobile ? 'center' : 'end'}
                 align="end"
               >
                 {isMobile && (
-                  <Box height="60%" width="20%" margin="0 1em" onClick={() => setOpen(true)}>
+                  <Box height="50%" width="20%" margin="0 1em" onClick={() => setOpen(true)}>
                     <svg className="icon" width={icon} height={icon} viewBox={menu.viewport}>
                       {menu.path}
                     </svg>
@@ -171,16 +181,23 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                   {open && (
                     <Overlay key="Overlay" className="fixed" style={overlay}>
                       <Box height="100%" justify="end">
-                        <Box height="90%" justify="around" margin={{ bottom: '3em' }}>
+                        <Box
+                          className="absolute"
+                          style={{ top: '1.5em', right: '1.5em' }}
+                          onClick={() => setOpen(false)}
+                        >
+                          <Text className="icon" color="dark" style={{ fontFamily: 'Roboto Mono' }}>
+                            Schließen
+                          </Text>
+                        </Box>
+                        <Box height="90%" justify="evenly" margin={{ bottom: '3em' }}>
                           {pages.map((link: string, index: number) => {
                             return (
                               <OverlayItem
                                 key={link}
+                                className="relative"
                                 margin="0 0 30px 30px"
-                                style={{
-                                  display: 'flex',
-                                  position: 'relative'
-                                }}
+                                style={{ display: 'flex' }}
                                 onClick={() => {
                                   const element = document.getElementById(ids[index])
                                   if (element)
@@ -189,20 +206,8 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                                 }}
                               >
                                 <Box>
-                                  <Text
-                                    style={{
-                                      fontFamily: 'Roboto Mono'
-                                    }}
-                                  >
-                                    {'0' + (index + 1)}
-                                  </Text>
-                                  <Text
-                                    style={{
-                                      fontFamily: 'Roboto Mono'
-                                    }}
-                                  >
-                                    {link}
-                                  </Text>
+                                  <Text style={number}>{'0' + (index + 1)}</Text>
+                                  <Text style={page}>{link}</Text>
                                 </Box>
                               </OverlayItem>
                             )
