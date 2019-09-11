@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
-import { Box, Text, Heading, ResponsiveContext } from 'grommet'
+import { Box, Text, ResponsiveContext } from 'grommet'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 // Atoms
 import Headline from '../../atoms/headline'
 
 // Assets
-import team from '../../assets/team.jpg'
-import teamMobile from '../../assets/teamMobile.jpg'
+import team from '../../assets/images/team.jpg'
+import teamMobile from '../../assets/images/teamMobile.jpg'
 
 // ===============================================
 const Home: FC = () => {

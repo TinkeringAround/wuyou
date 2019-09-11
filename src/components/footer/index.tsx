@@ -17,7 +17,7 @@ import Paragraph from '../../atoms/paragraph'
 import Dialog from '../dialog'
 
 // Assets
-import logo from '../../assets/logo.png'
+import logo from '../../assets/images/logo.png'
 
 // Consts
 const mailToWuyou =

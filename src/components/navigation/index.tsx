@@ -7,7 +7,7 @@ import posed, { PoseGroup } from 'react-pose'
 import { menu } from '../../atoms/icons'
 
 // Assets
-import logo from '../../assets/logo.png'
+import logo from '../../assets/images/logo.png'
 
 // ===============================================
 const Overlay = posed.div({

@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ResponsiveContext, Box, Text } from 'grommet'
 
 // Types:
-import { TOpinions, TQuote, TPricing, TPDF } from '../../types'
+import { TQuote, TPricing } from '../../types'
 
-// Context
-import context from '../../contentful-context'
+// Data
+import opinions from '../../assets/opinions'
 
 // Atoms:
 import Headline from '../../atoms/headline'
@@ -24,52 +24,7 @@ interface Props {}
 
 // ===============================================
 const Opinions: React.FC<Props> = () => {
-  const { contentful } = useContext(context)
-  const [opinions, setOpinions] = useState<TOpinions | null>(null)
   const [show, setShow] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (opinions == null && contentful != null) {
-      contentful
-        .getEntries({
-          content_type: 'opinions'
-        })
-        .then((results: any) => {
-          if (results.hasOwnProperty('items')) {
-            const quotes: Array<TQuote> = results.items[0].fields['quotes'].map((quote: any) => {
-              return {
-                author: quote.fields['author'],
-                age: quote.fields['age'],
-                quote: quote.fields['quote']
-              }
-            })
-
-            const prices: Array<TPricing> = results.items[0].fields['prices'].map(
-              (pricing: any) => {
-                return {
-                  title: pricing.fields['title'],
-                  price: pricing.fields['price']
-                }
-              }
-            )
-
-            const pdf: TPDF = {
-              description: results.items[0].fields['pdf'].fields['description'],
-              fileTitle: results.items[0].fields['pdf'].fields['data'].fields['title'],
-              fileURL: 'https:' + results.items[0].fields['pdf'].fields['data'].fields['file'].url
-            }
-
-            const opinions = {
-              quotes: shuffle(quotes),
-              prices: shuffle(prices),
-              pdf: pdf
-            }
-            setOpinions(opinions)
-          }
-        })
-        .catch((error: any) => console.log(error))
-    }
-  }, [contentful])
 
   return (
     <ResponsiveContext.Consumer>
@@ -111,7 +66,7 @@ const Opinions: React.FC<Props> = () => {
                     align="start"
                     direction={isMobile ? 'column' : 'row'}
                   >
-                    {opinions.quotes.map((quote: TQuote, index: number) => {
+                    {shuffle(opinions.quotes).map((quote: TQuote, index: number) => {
                       return (
                         <Box
                           key={'Quote-' + index}
@@ -191,7 +146,7 @@ const Opinions: React.FC<Props> = () => {
                       margin={isMobile ? '0' : '1.5em 0'}
                       wrap
                     >
-                      {opinions.prices.map((pricing: TPricing, index: number) => {
+                      {shuffle(opinions.prices).map((pricing: TPricing, index: number) => {
                         return (
                           <Box
                             key={'Pricing-' + index}
