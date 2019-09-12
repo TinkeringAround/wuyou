@@ -61,7 +61,7 @@ const Dialog: React.FC<Props> = ({ children, showDialog, closeDialog, isMobile =
     <Portal>
       <PoseGroup preEnterPose="exit">
         {showDialog && (
-          <DialogAnimation key="Dialog" className="fixed" style={dialog}>
+          <DialogAnimation key="Dialog" id="dialog" className="fixed" style={dialog}>
             <Box
               width="fit-content"
               height="fit-content"

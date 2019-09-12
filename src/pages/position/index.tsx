@@ -39,7 +39,7 @@ const Position: FC = () => (
                     return (
                       <Box
                         key={'TrainingTime-' + index}
-                        className="cardWithShadow"
+                        className="card"
                         width={isMobile ? '100%' : '45%'}
                         height={isMobile ? '250px' : '400px'}
                         margin={isMobile ? '1em 0' : '0'}
@@ -91,7 +91,6 @@ const Position: FC = () => (
                   })}
                 </Box>
               </Box>
-
               <Box
                 width="100%"
                 height={isMobile ? '300px' : '500px'}

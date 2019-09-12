@@ -30,6 +30,7 @@ const Opinions: React.FC<Props> = () => {
     <ResponsiveContext.Consumer>
       {size => {
         const isMobile = size.includes('small')
+        const isMedium = size.includes('medium')
 
         const quoteContent = {
           fontSize: isMobile ? '0.75em' : '1em',
@@ -118,32 +119,18 @@ const Opinions: React.FC<Props> = () => {
                   </Box>
                   <Box
                     width="100%"
-                    height={isMobile ? '80%' : 'auto'}
+                    height={isMobile ? '80%' : ''}
                     direction={isMobile ? 'column' : 'row'}
                     margin={(isMobile ? '0 ' : '2em ') + 'auto'}
                     style={{ minHeight: '60%' }}
                   >
                     <Box
                       width={isMobile ? '100%' : '50%'}
-                      margin={isMobile ? '1em 0 1.5em 0' : '0'}
-                    >
-                      <Paragraph
-                        size={isMobile ? '0.8em' : '1.2em'}
-                        margin={isMobile ? '0' : '1.5em 0'}
-                      >
-                        {opinions.pdf.description}
-                      </Paragraph>
-                      <Box width="50%" margin={isMobile ? '1em 0 0 0' : '0.5em 0 0 0'}>
-                        <Button link={opinions.pdf.fileURL}>Anmeldeformular</Button>
-                      </Box>
-                    </Box>
-                    <Box
-                      width={isMobile ? '100%' : '50%'}
-                      height={isMobile ? '50%' : 'auto'}
+                      height={isMobile ? '50%' : ''}
                       direction="row"
                       justify="center"
                       align="center"
-                      margin={isMobile ? '0' : '1.5em 0'}
+                      margin="1.5em 0"
                       wrap
                     >
                       {shuffle(opinions.prices).map((pricing: TPricing, index: number) => {
@@ -154,14 +141,14 @@ const Opinions: React.FC<Props> = () => {
                             width="46%"
                             height="46%"
                             margin="2%"
-                            background="light"
+                            background="white"
                             justify="center"
                             align="center"
                           >
                             <Box width="90%" height="90%" justify="between">
                               <Text
                                 color="black"
-                                size={isMobile ? '2em' : '4em'}
+                                size={isMobile ? '2em' : isMedium ? '3em' : '4em'}
                                 textAlign="center"
                                 style={{ fontFamily: 'Roboto Mono', fontWeight: 600 }}
                               >
@@ -176,7 +163,7 @@ const Opinions: React.FC<Props> = () => {
                               >
                                 <Box width="90%">
                                   <Text
-                                    size={isMobile ? '1em' : '1.25em'}
+                                    size={isMobile ? '1em' : isMedium ? '1em' : '1.5em'}
                                     textAlign="center"
                                     style={{ fontFamily: 'Roboto Mono' }}
                                   >
@@ -188,6 +175,23 @@ const Opinions: React.FC<Props> = () => {
                           </Box>
                         )
                       })}
+                    </Box>
+                    <Box
+                      width={isMobile ? '100%' : '50%'}
+                      margin="0"
+                      pad={isMobile ? '0 1%' : '0 1em'}
+                    >
+                      <Paragraph
+                        size={isMobile ? '0.8em' : '1.2em'}
+                        margin={isMobile ? '0' : '1.5em 0'}
+                      >
+                        {opinions.pdf.description}
+                      </Paragraph>
+                      <Box width="70%" margin={isMobile ? '0.5em 0 0 0' : '0.5em 0 0 0'}>
+                        <Button link={opinions.pdf.fileURL} textAlign="center">
+                          Anmeldeformular
+                        </Button>
+                      </Box>
                     </Box>
                   </Box>
                 </Dialog>

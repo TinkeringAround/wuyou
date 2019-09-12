@@ -164,7 +164,7 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
 
     // Shuffle
     newSections = shuffle(newSections)
-    if (isMobile) newSections = newSections.slice(0, 2)
+    if (isMobile) newSections = newSections.slice(0, 3)
 
     setSections(newSections)
   }
