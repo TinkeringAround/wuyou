@@ -1,14 +1,14 @@
 {
   "quotes": [
     {
-      "author": "Thomas Maier",
-      "age": 24,
-      "quote": "Im Wushu lernt man Selbstverteidigung, den waffenlosen Kampf, den Umgang mit den traditionellen chinesischen Waffen, akrobatische Sprünge und Drehungen wie im Film."
-    },
-    {
       "author": "Alina Walth",
       "age": 22,
       "quote": "Der Wuyou ist für mich wie eine zweite Familie geworden, deswegen gehe ich nicht nur wegen des Sports dorthin, sondern auch wegen der Menschen."
+    },
+    {
+      "author": "Thomas Maier",
+      "age": 24,
+      "quote": "Im Wushu lernt man Selbstverteidigung, den waffenlosen Kampf, den Umgang mit den traditionellen chinesischen Waffen, akrobatische Sprünge und Drehungen wie im Film."
     },
     {
       "author": "Mario Hahn",
@@ -18,16 +18,16 @@
   ],
   "prices": [
     {
-      "title": "Erwachsener",
-      "price": 30
+      "title": "Kind, Schüler & Student",
+      "price": 15
     },
     {
       "title": "Familie",
       "price": 50
     },
     {
-      "title": "Kind, Schüler & Student",
-      "price": 15
+      "title": "Erwachsener",
+      "price": 30
     },
     {
       "title": "Passives Mitglied",

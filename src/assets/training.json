@@ -21,26 +21,6 @@
   ],
   "trainers": [
     {
-      "name": "Mario Hahn",
-      "addition": "55",
-      "description": [
-        "Leitung Taiji",
-        "mehrmaliger Deutscher Meister im Taiji"
-      ],
-      "url": "https://images.ctfassets.net/10jt7as4i4e5/7gjODFOJUOqTVsIqNNavjY/58f3b851ecaa349985aa8261262e0edd/Profil_Mario.jpg"
-    },
-    {
-      "name": "Alina Walth",
-      "addition": "22",
-      "description": [
-        "Trainerin Taiji",
-        "Trainerin Taolu",
-        "Deutsche Meisterin",
-        "Europameisterin im Taiji"
-      ],
-      "url": "https://images.ctfassets.net/10jt7as4i4e5/3bMZScrVnsfDJdpBjfDShW/724d959ef7d10bf8385a60d264e4df22/Profil_Alina.jpg"
-    },
-    {
       "name": "Celine Walth",
       "addition": "20",
       "description": [
@@ -59,6 +39,26 @@
         "Teilnahme an Europa- und Weltmeisterschaften"
       ],
       "url": "https://images.ctfassets.net/10jt7as4i4e5/5n79Z9DrrBx60Vjj7KsPBu/364ab7292c702cc5f43f5b668192b9c5/Profil_Thomas.jpg"
+    },
+    {
+      "name": "Alina Walth",
+      "addition": "22",
+      "description": [
+        "Trainerin Taiji",
+        "Trainerin Taolu",
+        "Deutsche Meisterin",
+        "Europameisterin im Taiji"
+      ],
+      "url": "https://images.ctfassets.net/10jt7as4i4e5/3bMZScrVnsfDJdpBjfDShW/724d959ef7d10bf8385a60d264e4df22/Profil_Alina.jpg"
+    },
+    {
+      "name": "Mario Hahn",
+      "addition": "55",
+      "description": [
+        "Leitung Taiji",
+        "mehrmaliger Deutscher Meister im Taiji"
+      ],
+      "url": "https://images.ctfassets.net/10jt7as4i4e5/7gjODFOJUOqTVsIqNNavjY/58f3b851ecaa349985aa8261262e0edd/Profil_Mario.jpg"
     },
     {
       "name": "Birgit Walth",
