@@ -81,16 +81,14 @@ const Navigation: FC<Props> = ({ scrolled }) => {
         return (
           <>
             <Box
-              className="sticky animation"
+              className={isMobile ? 'sticky animation' : 'fixed animation'}
               width="100%"
               height={scrolled ? '80px' : '100px'}
-              background="white"
+              background={scrolled || isMobile ? 'white' : 'transparent'}
               direction="row"
               align="center"
               style={{
-                boxShadow: scrolled
-                  ? '0px 5px 5px 5px rgba(0, 0, 0, 0.15)'
-                  : '0px 5px 10px 5px rgba(0, 0, 0, 0.1)',
+                boxShadow: scrolled || isMobile ? '0px 5px 5px 5px rgba(0, 0, 0, 0.15)' : 'none',
                 zIndex: 10
               }}
             >
@@ -106,7 +104,12 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                 align="center"
               >
                 <Box width="90%" height="90%">
-                  <Image fit="contain" alt={logo.title} src={logo.url} />
+                  <Image
+                    className="animation"
+                    fit="contain"
+                    alt={logo.title}
+                    src={scrolled || isMobile ? logo.url : logo.urlInverse}
+                  />
                 </Box>
               </Box>
               {!isMobile && (
@@ -115,7 +118,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                     className="animation"
                     level="1"
                     size={title}
-                    color="black"
+                    color={scrolled ? 'black' : 'white'}
                     style={{ fontWeight: 600 }}
                     margin="0"
                   >
@@ -125,7 +128,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                     className="animation"
                     level="2"
                     size={subtitle}
-                    color="dark"
+                    color={scrolled ? 'dark' : 'lightGrey'}
                     style={{ fontFamily: 'Roboto Mono' }}
                     margin="0"
                   >
@@ -147,14 +150,14 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                   </Box>
                 )}
                 {!isMobile && (
-                  <nav>
+                  <nav style={{ margin: '0 1em 0 0' }}>
                     <ul
                       style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}
                     >
                       {pages.map((page: string, index: number) => (
                         <li
                           key={'NavigationItem-' + index}
-                          className="icon"
+                          className={'zoomOnHover ' + (scrolled ? 'blackText' : 'whiteText')}
                           style={listitem}
                           onClick={() => {
                             const element = document.getElementById(ids[index])

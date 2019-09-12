@@ -29,7 +29,8 @@ contentful
     if (results.hasOwnProperty('items')) {
       const logo = {
         title: results.items[0].fields['title'],
-        url: 'https:' + results.items[0].fields['logo'].fields['file'].url
+        url: 'https:' + results.items[0].fields['logo'].fields['file'].url,
+        urlInverse: 'https:' + results.items[0].fields['logoInverse'].fields['file'].url
       }
       fs.writeFileSync(pathPrefix + 'logo.json', JSON.stringify(logo, null, 2), 'utf-8')
     }
@@ -38,7 +39,7 @@ contentful
 
 // ===============================================
 
-// Logo
+// Home
 contentful
   .getEntries({
     content_type: 'home',

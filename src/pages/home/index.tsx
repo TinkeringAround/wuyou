@@ -38,10 +38,10 @@ const Home: FC = () => {
             <Box
               id={isMobile ? '' : 'home'}
               width="100%"
-              height={isMobile ? '350px' : window.innerHeight - 100 + 'px'}
+              height={isMobile ? '350px' : window.innerHeight + 'px'}
               justify="center"
               align="center"
-              margin={isMobile ? '0 0 2em 0' : '0'}
+              margin={isMobile ? '0 0 4em 0' : '0'}
             >
               <Box className="relative" width="100%" height="100%">
                 {!isMobile && (
@@ -63,6 +63,7 @@ const Home: FC = () => {
                     </Box>
                   </Box>
                 )}
+                {/* TODO: Video */}
                 <LazyLoadImage
                   alt="Wuyou e.V. - Das Team"
                   effect="opacity"
@@ -70,9 +71,7 @@ const Home: FC = () => {
                     (isMobile ? home.mobile : home.desktop) +
                     (isMobile
                       ? `?fm=jpg&fl=progressive&f=faces&fit=thumb`
-                      : `?fm=jpg&fl=progressive&fit=thumb&w=${
-                          window.innerWidth
-                        }&h=${window.innerHeight - 100}`)
+                      : `?fm=jpg&fl=progressive&fit=thumb&w=${window.innerWidth}&h=${window.innerHeight}`)
                   }
                   scrollPosition={false}
                   visibleByDefault={false}

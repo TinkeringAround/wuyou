@@ -83,7 +83,7 @@ const Opinions: React.FC<Props> = () => {
                       )
                     })}
                   </Box>
-                  <Box width="100%" background="lightgrey" justify="center" align="center">
+                  <Box width="100%" background="lightGrey" justify="center" align="center">
                     <Box
                       width={isMobile ? '90%' : '80%'}
                       justify="center"
@@ -145,7 +145,7 @@ const Opinions: React.FC<Props> = () => {
                             justify="center"
                             align="center"
                           >
-                            <Box width="90%" height="90%" justify="between">
+                            <Box width="90%" height="90%" justify="center">
                               <Text
                                 color="black"
                                 size={isMobile ? '2em' : isMedium ? '3em' : '4em'}

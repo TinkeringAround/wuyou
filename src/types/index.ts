@@ -8,6 +8,7 @@ export type THome = {
 export type TLogo = {
   title: string
   url: string
+  urlInverse: string
 }
 
 // ===============================================

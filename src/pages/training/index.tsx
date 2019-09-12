@@ -1,5 +1,4 @@
 import React from 'react'
-import { ResponsiveContext } from 'grommet'
 
 // Partials:
 import Articles from './articles'
@@ -15,17 +14,9 @@ import * as training from '../../assets/training.json'
 const Training = () => {
   return (
     <>
-      {training && (
-        <ResponsiveContext.Consumer>
-          {size => (
-            <>
-              <Spacer id="training" height={size.includes('small') ? '2em' : '6em'} />
-              <Articles articles={training.articles} />
-              <Trainerteam trainers={training.trainers} />
-            </>
-          )}
-        </ResponsiveContext.Consumer>
-      )}
+      <Spacer id="training" height="0" />
+      <Articles articles={training.articles} />
+      <Trainerteam trainers={training.trainers} />
     </>
   )
 }

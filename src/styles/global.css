@@ -196,7 +196,23 @@ body {
 
 /* Effects */
 .animation {
-  transition: 0.25s ease;
+  transition: 0.5s ease;
+}
+
+.whiteText {
+  color: var(--white);
+}
+
+.whiteText:hover {
+  color: var(--red);
+}
+
+.blackText {
+  color: var(--black);
+}
+
+.blackText:hover {
+  color: var(--red);
 }
 
 .whiteShadow {
@@ -225,10 +241,9 @@ body {
   transform: scale(1.1);
 }
 
-.shadow {
-  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.1);
+.slick-slide div {
+  outline: 0;
 }
-
 /* Components */
 .card {
   transition: all 0.25s;

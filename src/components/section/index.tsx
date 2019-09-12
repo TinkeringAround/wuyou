@@ -77,11 +77,17 @@ const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => {
         )
 
         return (
-          <Box justify="center" align="center" height={isMobile ? 'auto' : '80vh'} pad="2%">
+          <Box
+            justify="center"
+            align="center"
+            height={isMobile ? 'auto' : '80vh'}
+            pad="2%"
+            background="lightGrey"
+          >
             <Box
               width="95%"
               height="95%"
-              className="relative shadow"
+              className="relative "
               direction="column"
               justify="center"
               align="center"

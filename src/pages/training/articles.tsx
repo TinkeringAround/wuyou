@@ -21,7 +21,7 @@ const Articles: FC<Props> = ({ articles }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0)
 
   const settings: Settings = {
-    adaptiveHeight: false,
+    adaptiveHeight: true,
     arrows: false,
     dots: false,
     infinite: true,
