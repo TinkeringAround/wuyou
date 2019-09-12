@@ -53,10 +53,10 @@ const Trainerteam: FC<Props> = ({ trainers }) => {
                 >
                   <Image image={shuffledTrainers[0]} mode={isMobile ? 6 : 2} />
                   <Box width={isMobile ? '100%' : '50%'} height="100%" direction="row" wrap>
-                    <Image image={shuffledTrainers[1]} mode={isMobile ? 4 : 1} small />
-                    <Image image={shuffledTrainers[2]} mode={isMobile ? 4 : 1} small />
-                    <Image image={shuffledTrainers[3]} mode={isMobile ? 4 : 1} small />
-                    <Image image={shuffledTrainers[4]} mode={isMobile ? 4 : 1} small />
+                    <Image image={shuffledTrainers[1]} mode={isMobile ? 4 : 1} small face />
+                    <Image image={shuffledTrainers[2]} mode={isMobile ? 4 : 1} small face />
+                    <Image image={shuffledTrainers[3]} mode={isMobile ? 4 : 1} small face />
+                    <Image image={shuffledTrainers[4]} mode={isMobile ? 4 : 1} small face />
                   </Box>
                 </Box>
               )}

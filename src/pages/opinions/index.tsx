@@ -5,7 +5,7 @@ import { ResponsiveContext, Box, Text } from 'grommet'
 import { TQuote, TPricing } from '../../types'
 
 // Data
-import opinions from '../../assets/opinions'
+import * as opinions from '../../assets/opinions.json'
 
 // Atoms:
 import Headline from '../../atoms/headline'
@@ -34,7 +34,7 @@ const Opinions: React.FC<Props> = () => {
         const quoteContent = {
           fontSize: isMobile ? '0.75em' : '1em',
           marginBottom: '0.75em',
-          fontFamily: 'Roboto mono',
+          fontFamily: 'Roboto Mono',
           lineHeight: 1.5,
           letterSpacing: '0.01rem'
         }
@@ -42,7 +42,7 @@ const Opinions: React.FC<Props> = () => {
           fontSize: isMobile ? '1em' : '1.25em',
           lineHeight: 1,
           marginTop: '0.5rem',
-          fontFamily: 'Roboto mono',
+          fontFamily: 'Roboto Mono',
           fontWeight: 600
         }
 

@@ -7,7 +7,7 @@ import posed, { PoseGroup } from 'react-pose'
 import { menu } from '../../atoms/icons'
 
 // Assets
-import logo from '../../assets/images/logo.png'
+import * as logo from '../../assets/logo.json'
 
 // ===============================================
 const Overlay = posed.div({
@@ -106,7 +106,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                 align="center"
               >
                 <Box width="90%" height="90%">
-                  <Image fit="contain" src={logo} />
+                  <Image fit="contain" alt={logo.title} src={logo.url} />
                 </Box>
               </Box>
               {!isMobile && (

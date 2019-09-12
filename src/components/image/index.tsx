@@ -16,6 +16,7 @@ interface Props {
   image: TImage
   fullsizeable?: boolean
   small?: boolean
+  face?: boolean
 }
 
 /*
@@ -31,7 +32,13 @@ Mobile
 */
 
 // ===============================================
-const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = false }) => {
+const Image: React.FC<Props> = ({
+  mode,
+  fullsizeable = false,
+  image,
+  small = false,
+  face = false
+}) => {
   const { name, description, addition, url } = image
   const [hover, setHover] = useState(false)
   const [showDialog, setShowDialog] = useState(false)
@@ -122,7 +129,7 @@ const Image: React.FC<Props> = ({ mode, fullsizeable = false, image, small = fal
         <LazyLoadImage
           alt={name}
           effect="opacity"
-          src={url}
+          src={url + '?' + (small ? 'q=75&' : '') + (high || face ? 'f=face&fit=fill' : '')}
           scrollPosition={false}
           visibleByDefault={false}
           width="100%"

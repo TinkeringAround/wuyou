@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, FC } from 'react'
 import { Box, Heading, ResponsiveContext, Image, Text } from 'grommet'
 
 // Types
-import { TDocument, TChapter, TFooter } from '../../types'
-
-// Context
-import context from '../../contentful-context'
+import { TChapter } from '../../types'
 
 // Atoms
 import { email, youtube, facebook } from '../../atoms/icons'
@@ -17,7 +14,8 @@ import Paragraph from '../../atoms/paragraph'
 import Dialog from '../dialog'
 
 // Assets
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/logo.json'
+import footer from '../../assets/footer.json'
 
 // Consts
 const mailToWuyou =
@@ -26,53 +24,8 @@ const linkToFacebook = 'https://www.facebook.com/WuyouEv/'
 const linktToYoutube = 'https://www.youtube.com/channel/UCcYxlWYmuqUL6l4xrq5lmnw'
 
 // ===============================================
-interface Props {}
-
-// ===============================================
-const Footer: React.FC<Props> = () => {
-  const { contentful } = useContext(context)
+const Footer: FC = () => {
   const [dialog, setDialog] = useState<string | null>(null)
-  const [footer, setFooter] = useState<TFooter | null>(null)
-
-  useEffect(() => {
-    if (footer == null) {
-      contentful
-        .getEntries({
-          content_type: 'document',
-          include: 2
-        })
-        .then((results: any) => {
-          var newFooter: TFooter = {
-            imprint: null,
-            datasecurity: null
-          }
-          if (results.hasOwnProperty('items')) {
-            results.items.forEach((document: any) => {
-              const tmp: TDocument = {
-                title: document.fields['title'],
-                chapters: document.fields['chapter'].map((chapter: any) => {
-                  const c: TChapter = {
-                    title: chapter.fields['title'],
-                    paragraph: chapter.fields['paragraph'] ? chapter.fields['paragraph'] : null
-                  }
-                  return c
-                }),
-                data: document.fields.hasOwnProperty('data')
-                  ? {
-                      title: document.fields['data'].fields['title'],
-                      url: 'https:' + document.fields['data'].fields['file'].url
-                    }
-                  : null
-              }
-              if (tmp.title === 'Impressum') newFooter.imprint = tmp
-              else if (tmp.title === 'Datenschutz') newFooter.datasecurity = tmp
-            })
-          }
-          setFooter(newFooter)
-        })
-        .catch((error: any) => console.log(error))
-    }
-  })
 
   const wrapper = '70px'
   const icon = '50%'
@@ -113,9 +66,14 @@ const Footer: React.FC<Props> = () => {
                   height="50%"
                   justify="center"
                   align="center"
+                  margin="1em 0 2em 0"
+                  onClick={() => {
+                    const home = document.getElementById('home')
+                    if (home) home.scrollIntoView({ block: 'end', behavior: 'smooth' })
+                  }}
                 >
                   <Box height="50%">
-                    <Image fit="contain" src={logo} />
+                    <Image fit="contain" alt={logo.title} src={logo.url} />
                   </Box>
                   <Text
                     textAlign="center"
@@ -125,6 +83,15 @@ const Footer: React.FC<Props> = () => {
                     style={{ fontFamily: 'Roboto Mono', fontWeight: 600 }}
                   >
                     Wushu.Taiji.Fitness.
+                  </Text>
+                  <Text
+                    textAlign="center"
+                    color="black"
+                    size="0.75em"
+                    margin="0.25em 0"
+                    style={{ fontFamily: 'Roboto Mono', fontWeight: 600 }}
+                  >
+                    wuyou@wuyou.de
                   </Text>
                 </Box>
 
@@ -234,9 +201,11 @@ const Footer: React.FC<Props> = () => {
                             >
                               {chapter.title}
                             </Heading>
-                            <Paragraph noPadding margin="0.5em 0 2em 0" size="1em">
-                              {chapter.paragraph}
-                            </Paragraph>
+                            {chapter.paragraph && (
+                              <Paragraph noPadding margin="0.5em 0 2em 0" size="1em">
+                                {chapter.paragraph}
+                              </Paragraph>
+                            )}
                           </React.Fragment>
                         )
                       })}
@@ -254,9 +223,11 @@ const Footer: React.FC<Props> = () => {
                             >
                               {chapter.title}
                             </Heading>
-                            <Paragraph noPadding margin="0.5em 0 2em 0" size="1em">
-                              {chapter.paragraph}
-                            </Paragraph>
+                            {chapter.paragraph && (
+                              <Paragraph noPadding margin="0.5em 0 2em 0" size="1em">
+                                {chapter.paragraph}
+                              </Paragraph>
+                            )}
                           </React.Fragment>
                         )
                       })}

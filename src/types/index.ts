@@ -1,4 +1,16 @@
 // ===============================================
+export type THome = {
+  desktop: string
+  mobile: string
+}
+
+// ===============================================
+export type TLogo = {
+  title: string
+  url: string
+}
+
+// ===============================================
 export type TTraining = {
   articles: Array<TArticle>
   trainers: Array<TImage>
@@ -9,13 +21,6 @@ export type TArticle = {
   subtitle: string
   paragraph: string
   url: string
-}
-
-export type TTrainer = {
-  name: string
-  age?: string
-  description: Array<string>
-  image: string
 }
 
 // ===============================================
@@ -88,7 +93,7 @@ export type TDocument = {
 
 export type TChapter = {
   title: string
-  paragraph: string
+  paragraph: string | null
 }
 
 export type TData = {

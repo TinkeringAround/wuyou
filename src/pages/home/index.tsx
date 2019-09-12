@@ -6,8 +6,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Headline from '../../atoms/headline'
 
 // Assets
-import team from '../../assets/images/team.jpg'
-import teamMobile from '../../assets/images/teamMobile.jpg'
+import * as home from '../../assets/home.json'
 
 // ===============================================
 const Home: FC = () => {
@@ -67,7 +66,10 @@ const Home: FC = () => {
                 <LazyLoadImage
                   alt="Wuyou e.V. - Das Team"
                   effect="opacity"
-                  src={isMobile ? teamMobile : team}
+                  src={
+                    (isMobile ? home.mobile : home.desktop) +
+                    '?fm=jpg&fl=progressive&f=faces&fit=fill'
+                  }
                   scrollPosition={false}
                   visibleByDefault={false}
                   width="100%"
