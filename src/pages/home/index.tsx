@@ -68,7 +68,11 @@ const Home: FC = () => {
                   effect="opacity"
                   src={
                     (isMobile ? home.mobile : home.desktop) +
-                    '?fm=jpg&fl=progressive&f=faces&fit=fill'
+                    (isMobile
+                      ? `?fm=jpg&fl=progressive&f=faces&fit=thumb`
+                      : `?fm=jpg&fl=progressive&fit=thumb&w=${
+                          window.innerWidth
+                        }&h=${window.innerHeight - 100}`)
                   }
                   scrollPosition={false}
                   visibleByDefault={false}

@@ -162,9 +162,9 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
       })
     }
 
-    // Shuffle Twice
+    // Shuffle
     newSections = shuffle(newSections)
-    newSections = shuffle(newSections)
+    if (isMobile) newSections = newSections.slice(0, 2)
 
     setSections(newSections)
   }

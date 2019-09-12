@@ -105,7 +105,13 @@ const Footer: FC = () => {
                     align="center"
                     background="red"
                   >
-                    <a href={mailToWuyou} target="_blank" rel="noopener noreferrer" style={a}>
+                    <a
+                      aria-label="Schreibe eine Email an wuyou@wuyou.de"
+                      href={mailToWuyou}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={a}
+                    >
                       <svg width={icon} height={icon} viewBox={email.viewport}>
                         {email.path}
                       </svg>
@@ -120,7 +126,13 @@ const Footer: FC = () => {
                     align="center"
                     background="red"
                   >
-                    <a href={linkToFacebook} target="_blank" rel="noopener noreferrer" style={a}>
+                    <a
+                      aria-label="Besuche unsere Facebook-Seite"
+                      href={linkToFacebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={a}
+                    >
                       <svg width={icon} height={icon} viewBox={facebook.viewport}>
                         {facebook.path}
                       </svg>
@@ -135,7 +147,13 @@ const Footer: FC = () => {
                     align="center"
                     background="red"
                   >
-                    <a href={linktToYoutube} target="_blank" rel="noopener noreferrer" style={a}>
+                    <a
+                      aria-label="Besuche unsere YouTube-Seite"
+                      href={linktToYoutube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={a}
+                    >
                       <svg width={icon} height={icon} viewBox={youtube.viewport}>
                         {youtube.path}
                       </svg>

@@ -32,7 +32,7 @@ const Headline: FC<Props> = ({ alignEnd = false, title, subtitle, tSize = null, 
             {title}
           </Heading>
           {subtitle && subtitle !== '' && (
-            <Heading level="2" margin="0" size={subtitleSize} style={{ opacity: 0.5 }}>
+            <Heading level="2" color="dark" margin="0" size={subtitleSize}>
               {subtitle}
             </Heading>
           )}

@@ -109,7 +109,7 @@ const Image: React.FC<Props> = ({
           style={overlay}
         >
           <Box width="100%" height="100%" direction="column" justify="center" align="center">
-            <Text textAlign="start" weight="bold" color="grey" style={title}>
+            <Text textAlign="start" weight="bold" color="dark" style={title}>
               {name + (addition ? ',' + addition : '')}
             </Text>
             {description != null &&
@@ -118,7 +118,7 @@ const Image: React.FC<Props> = ({
                   key={'Description-' + entry + index}
                   margin="0 auto"
                   textAlign="start"
-                  color="grey"
+                  color="dark"
                   style={line}
                 >
                   {entry}
@@ -129,7 +129,9 @@ const Image: React.FC<Props> = ({
         <LazyLoadImage
           alt={name}
           effect="opacity"
-          src={url + '?' + (small ? 'q=75&' : '') + (high || face ? 'f=face&fit=fill' : '')}
+          src={
+            url + '?' + (small || isMobile ? 'q=75&' : '') + (high || face ? 'f=face&fit=fill' : '')
+          }
           scrollPosition={false}
           visibleByDefault={false}
           width="100%"
