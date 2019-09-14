@@ -25,4 +25,4 @@ yarn-error.log*
 .vscode
 .env
 
-src/assets/*
+src/assets
