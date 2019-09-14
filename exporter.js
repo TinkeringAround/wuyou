@@ -1,4 +1,5 @@
 var fs = require('fs')
+require('dotenv').config()
 
 // Shuffle
 const shuffle = a => {
@@ -11,8 +12,8 @@ const shuffle = a => {
 
 // ===============================================
 const contentful = require('contentful').createClient({
-  space: '10jt7as4i4e5',
-  accessToken: '1c9eac010cd45571963852bd6738cb948824951476babefb45b0b6e5d0f14cd9'
+  space: process.env.CONTENTFUL_SPACE,
+  accessToken: process.env.CONTENTFUL_API_KEY
 })
 
 const pathPrefix = './src/assets/'
