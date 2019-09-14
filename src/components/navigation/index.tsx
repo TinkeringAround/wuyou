@@ -81,14 +81,14 @@ const Navigation: FC<Props> = ({ scrolled }) => {
         return (
           <>
             <Box
-              className={isMobile ? 'sticky animation' : 'fixed animation'}
+              className="fixed animation"
               width="100%"
               height={scrolled ? '80px' : '100px'}
-              background={scrolled || isMobile ? 'white' : 'transparent'}
+              background={scrolled ? 'white' : 'transparent'}
               direction="row"
               align="center"
               style={{
-                boxShadow: scrolled || isMobile ? '0px 5px 5px 5px rgba(0, 0, 0, 0.15)' : 'none',
+                boxShadow: scrolled ? '0px 5px 5px 5px rgba(0, 0, 0, 0.15)' : 'none',
                 zIndex: 10
               }}
             >
@@ -108,7 +108,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                     className="animation"
                     fit="contain"
                     alt={logo.title}
-                    src={scrolled || isMobile ? logo.url : logo.urlInverse}
+                    src={scrolled ? logo.url : logo.urlInverse}
                   />
                 </Box>
               </Box>
@@ -144,7 +144,12 @@ const Navigation: FC<Props> = ({ scrolled }) => {
               >
                 {isMobile && (
                   <Box height="50%" width="20%" margin="0 1em" onClick={() => setOpen(true)}>
-                    <svg className="icon" width={icon} height={icon} viewBox={menu.viewport}>
+                    <svg
+                      width={icon}
+                      height={icon}
+                      viewBox={menu.viewport}
+                      style={{ fill: scrolled ? 'black' : 'white' }}
+                    >
                       {menu.path}
                     </svg>
                   </Box>

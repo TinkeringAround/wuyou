@@ -21,10 +21,10 @@ import Footer from './components/footer/'
 import Spacer from './components/spacer'
 
 // Sentry Init
-Sentry.init({ dsn: 'https://1d28a670ef5d470da5b18d8b755e9b10@sentry.io/1515723' })
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_URL })
 
 // Consts:
-const NAVIGATION = 200
+const NAVIGATION = window.innerHeight / 3
 const TOLERANCE = 25
 
 // ===============================================

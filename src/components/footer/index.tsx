@@ -19,7 +19,7 @@ import footer from '../../assets/footer.json'
 
 // Consts
 const mailToWuyou =
-  'mailto:wuyou@wuyo.de?subject=Kontaktanfrage%20an%20den%20Wuyou%20e.V.&amp;body=Hallo%20liebes%20Wuyou%20Team,%0D%0A%0D%0A...'
+  'mailto:wuyou@wuyou.de?subject=Kontaktanfrage%20an%20den%20Wuyou%20e.V.&amp;body=Hallo%20liebes%20Wuyou%20Team,%0D%0A%0D%0A...'
 const linkToFacebook = 'https://www.facebook.com/WuyouEv/'
 const linktToYoutube = 'https://www.youtube.com/channel/UCcYxlWYmuqUL6l4xrq5lmnw'
 

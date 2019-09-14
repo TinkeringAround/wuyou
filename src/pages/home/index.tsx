@@ -1,9 +1,6 @@
 import React, { FC } from 'react'
-import { Box, Text, ResponsiveContext } from 'grommet'
+import { Box, Text, ResponsiveContext, Heading } from 'grommet'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-
-// Atoms
-import Headline from '../../atoms/headline'
 
 // Assets
 import * as home from '../../assets/home.json'
@@ -18,60 +15,59 @@ const Home: FC = () => {
 
         return (
           <>
-            {isMobile && (
-              <Box
-                id="home"
-                width="90%"
-                pad="0.25em"
-                margin="2em auto"
-                background="rgba(255,255,255,0.9)"
-              >
-                <Headline tSize="3em" title="Wuyou e.V." />
-                <Text size="1em" margin="1em 0 0 6px">
-                  In familiärer Atmosphäre chinesische Kampfkunst erlernen und trainieren!
-                </Text>
-                <Text size="1em" margin="0.25em 0 0 6px">
-                  Schaut einfach mal bei uns beim Training vorbei!
-                </Text>
-              </Box>
-            )}
             <Box
-              id={isMobile ? '' : 'home'}
+              id="home"
               width="100%"
-              height={isMobile ? '350px' : window.innerHeight + 'px'}
+              height={window.innerHeight + 'px'}
               justify="center"
               align="center"
-              margin={isMobile ? '0 0 4em 0' : '0'}
+              margin="0"
             >
               <Box className="relative" width="100%" height="100%">
-                {!isMobile && (
-                  <Box
-                    className="absolute"
-                    width={isMedium ? '80%' : '70%'}
-                    pad="2em"
-                    style={{ bottom: '2em', left: isMobile ? '1em' : '2em' }}
-                    background="rgba(255,255,255,0.9)"
-                  >
-                    <Headline tSize={isMedium ? '5em' : '7em'} title="Wuyou e.V." />
-                    <Box width={isMedium ? '100%' : '90%'} margin="1em 0">
-                      <Text size={isMedium ? '1.1em' : '1.5em'} margin="0.25em 0 0 6px">
-                        In familiärer Atmosphäre chinesische Kampfkunst erlernen und trainieren!
-                      </Text>
-                      <Text size={isMedium ? '1.1em' : '1.5em'} margin="0.25em 0 0 6px">
-                        Schaut einfach mal bei uns beim Training vorbei!
-                      </Text>
-                    </Box>
+                <Box
+                  className="absolute"
+                  width={isMobile ? '100%' : isMedium ? '80%' : '70%'}
+                  pad={isMobile ? '1em' : '2em'}
+                  style={{
+                    bottom: isMobile ? '1em' : '2em',
+                    left: isMobile ? '0' : '2em',
+                    zIndex: 5
+                  }}
+                >
+                  <Box width={isMedium ? '100%' : '90%'} margin="1em 0">
+                    <Heading
+                      level="1"
+                      size={isMobile ? '3em' : isMedium ? '4em' : '8em'}
+                      color="white"
+                      margin="0"
+                    >
+                      Wuyou e.V.
+                    </Heading>
+                    <Text
+                      size={isMobile ? '0.85em' : isMedium ? '1.1em' : '1.5em'}
+                      margin="0.25em 0 0 6px"
+                      color="white"
+                      style={{ fontWeight: isMobile ? 100 : 600 }}
+                    >
+                      In familiärer Atmosphäre chinesische Kampfkunst erlernen und trainieren!
+                    </Text>
+                    <Text
+                      size={isMobile ? '0.85em' : isMedium ? '1.1em' : '1.5em'}
+                      margin="0.25em 0 0 6px"
+                      color="white"
+                      style={{ fontWeight: isMobile ? 100 : 600 }}
+                    >
+                      Schaut einfach mal bei uns beim Training vorbei!
+                    </Text>
                   </Box>
-                )}
+                </Box>
                 {/* TODO: Video */}
                 <LazyLoadImage
                   alt="Wuyou e.V. - Das Team"
                   effect="opacity"
                   src={
                     (isMobile ? home.mobile : home.desktop) +
-                    (isMobile
-                      ? `?fm=jpg&fl=progressive&f=faces&fit=thumb`
-                      : `?fm=jpg&fl=progressive&fit=thumb&w=${window.innerWidth}&h=${window.innerHeight}`)
+                    `?fm=jpg&fl=progressive&fit=thumb&w=${window.innerWidth}&h=${window.innerHeight}`
                   }
                   scrollPosition={false}
                   visibleByDefault={false}
