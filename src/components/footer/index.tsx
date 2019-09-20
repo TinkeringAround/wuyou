@@ -1,21 +1,14 @@
 import React, { useState, FC } from 'react'
-import { Box, Heading, ResponsiveContext, Image, Text } from 'grommet'
-
-// Types
-import { TChapter } from '../../types'
+import { Box, ResponsiveContext, Image, Text } from 'grommet'
 
 // Atoms
 import { email, youtube, facebook } from '../../atoms/icons'
 import Button from '../../atoms/button'
-import Headline from '../../atoms/headline'
-import Paragraph from '../../atoms/paragraph'
-
-// Components
-import Dialog from '../dialog'
 
 // Assets
 import logo from '../../assets/logo.json'
 import footer from '../../assets/footer.json'
+import FooterDialog from './dialog'
 
 // Consts
 const mailToWuyou =
@@ -55,6 +48,7 @@ const Footer: FC = () => {
               margin="0 0 2em 0"
             >
               <Box
+                className="noFlickr"
                 height="100%"
                 width={isMobile ? '100%' : '60%'}
                 justify="center"
@@ -72,10 +66,11 @@ const Footer: FC = () => {
                     if (home) home.scrollIntoView({ block: 'end', behavior: 'smooth' })
                   }}
                 >
-                  <Box height="50%">
+                  <Box className="noFlickr" height="50%">
                     <Image fit="contain" alt={logo.title} src={logo.url} />
                   </Box>
                   <Text
+                    className="noFlickr"
                     textAlign="center"
                     color="black"
                     size="1.25em"
@@ -85,6 +80,7 @@ const Footer: FC = () => {
                     Wushu.Taiji.Fitness.
                   </Text>
                   <Text
+                    className="noFlickr"
                     textAlign="center"
                     color="black"
                     size="0.75em"
@@ -97,7 +93,6 @@ const Footer: FC = () => {
 
                 <Box height="30%" justify="center" align="start" direction="row">
                   <Box
-                    className="zoomOnHover"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"
@@ -118,7 +113,6 @@ const Footer: FC = () => {
                     </a>
                   </Box>
                   <Box
-                    className="zoomOnHover"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"
@@ -139,7 +133,6 @@ const Footer: FC = () => {
                     </a>
                   </Box>
                   <Box
-                    className="zoomOnHover"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"
@@ -183,84 +176,13 @@ const Footer: FC = () => {
               </Box>
             </Box>
             {/* Dialog */}
-            <Dialog
-              showDialog={dialog ? true : false}
-              closeDialog={() => setDialog(null)}
+            <FooterDialog
+              close={() => setDialog(null)}
+              dialog={dialog}
               isMobile={isMobile}
-            >
-              {dialog && footer && footer.imprint && footer.datasecurity && (
-                <>
-                  <Box height="25%">
-                    <Headline
-                      title={
-                        dialog === 'imprint' ? footer.imprint.title : footer.datasecurity.title
-                      }
-                    />
-                  </Box>
-
-                  <Box
-                    height={
-                      dialog === 'datasecurity' || (dialog === 'imprint' && !footer.imprint.data)
-                        ? '75%'
-                        : '60%'
-                    }
-                    style={{ overflowY: 'scroll', overflowX: 'hidden' }}
-                  >
-                    {dialog === 'imprint' &&
-                      footer.imprint.chapters.map((chapter: TChapter, index: number) => {
-                        return (
-                          <React.Fragment key={'Imprint-Chapter-' + index}>
-                            <Heading
-                              level="2"
-                              size="1.25em"
-                              color="black"
-                              style={{ fontFamily: 'Roboto Mono' }}
-                              margin="0"
-                            >
-                              {chapter.title}
-                            </Heading>
-                            {chapter.paragraph && (
-                              <Paragraph noPadding margin="0.5em 0 2em 0" size="1em">
-                                {chapter.paragraph}
-                              </Paragraph>
-                            )}
-                          </React.Fragment>
-                        )
-                      })}
-
-                    {dialog === 'datasecurity' &&
-                      footer.datasecurity.chapters.map((chapter: TChapter, index: number) => {
-                        return (
-                          <React.Fragment key={'Datasecurity-Chapter-' + index}>
-                            <Heading
-                              level="2"
-                              size="1.25em"
-                              color="black"
-                              style={{ fontFamily: 'Roboto Mono' }}
-                              margin="0"
-                            >
-                              {chapter.title}
-                            </Heading>
-                            {chapter.paragraph && (
-                              <Paragraph noPadding margin="0.5em 0 2em 0" size="1em">
-                                {chapter.paragraph}
-                              </Paragraph>
-                            )}
-                          </React.Fragment>
-                        )
-                      })}
-                  </Box>
-
-                  {dialog === 'imprint' && footer.imprint.data && (
-                    <Box width="30%" height="15%" justify="end">
-                      <Button link={footer.imprint.data.url} textAlign="center">
-                        {footer.imprint.data.title}
-                      </Button>
-                    </Box>
-                  )}
-                </>
-              )}
-            </Dialog>
+              imprint={footer.imprint}
+              datasecurity={footer.datasecurity}
+            />
           </>
         )
       }}

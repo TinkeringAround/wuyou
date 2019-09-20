@@ -39,13 +39,13 @@ export type TOpinions = {
 
 export type TQuote = {
   author: string
-  age: string
+  age: number
   quote: string
 }
 
 export type TPricing = {
   title: string
-  price: string
+  price: number
 }
 
 export type TPDF = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import { Box, ResponsiveContext } from 'grommet'
 
 // ===============================================
@@ -9,7 +9,7 @@ interface Props {
 }
 
 // ===============================================
-const Pagination: React.FC<Props> = ({ goto, count, currentSlide }) => {
+const Pagination: FC<Props> = ({ goto, count, currentSlide }) => {
   const [pagination] = useState<Array<number>>(
     (): Array<number> => {
       const array: Array<number> = []

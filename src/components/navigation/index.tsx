@@ -1,29 +1,15 @@
 import React, { FC, useState } from 'react'
-import { Box, Text, ResponsiveContext, Image, Heading } from 'grommet'
-import { Portal } from 'react-portal'
-import posed, { PoseGroup } from 'react-pose'
+import { Box, ResponsiveContext, Image, Heading } from 'grommet'
 
 // Atoms
 import { menu } from '../../atoms/icons'
 
+// Partials
+import Mobile from './mobile'
+import Desktop from './desktop'
+
 // Assets
 import * as logo from '../../assets/logo.json'
-
-// ===============================================
-const Overlay = posed.div({
-  exit: { opacity: 0 },
-  enter: {
-    opacity: 1,
-    transition: { duration: 150 },
-    beforeChildren: true,
-    staggerChildren: 50
-  }
-})
-
-const OverlayItem = posed.div({
-  exit: { opacity: 0, left: '-5%' },
-  enter: { opacity: 1, left: '5%' }
-})
 
 // Pages
 const pages = ['Training', 'Meinungen', 'Gallerie', 'Anfahrt', 'Kontakt']
@@ -38,17 +24,6 @@ interface Props {
 const Navigation: FC<Props> = ({ scrolled }) => {
   const [open, setOpen] = useState<boolean>(false)
 
-  const overlay = {
-    left: 0,
-    top: 0,
-    zIndex: 800,
-
-    width: '100vw',
-    height: window.innerHeight,
-
-    backgroundColor: 'white'
-  }
-
   return (
     <ResponsiveContext.Consumer>
       {size => {
@@ -58,25 +33,6 @@ const Navigation: FC<Props> = ({ scrolled }) => {
         const title = scrolled ? (isMedium ? '1.3em' : '1.5em') : isMedium ? '1.5em' : '1.75em'
         const subtitle = scrolled ? (isMedium ? '0.7em' : '1em') : isMedium ? '0.8em' : '1.25em'
         const icon = '90%'
-
-        const listitem = {
-          display: 'inline',
-          fontSize: isMedium ? '0.8em' : '1em',
-          fontWeight: 600,
-          fontFamily: 'Roboto Mono',
-          margin: '0 0.75em',
-          cursor: 'pointer'
-        }
-
-        const number = {
-          fontFamily: 'Roboto Mono',
-          fontSize: '1em'
-        }
-        const page = {
-          fontFamily: 'Roboto Mono',
-          fontSize: '2em',
-          fontWeight: 600
-        }
 
         return (
           <>
@@ -155,78 +111,18 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                   </Box>
                 )}
                 {!isMobile && (
-                  <nav style={{ margin: '0 1em 0 0' }}>
-                    <ul
-                      style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}
-                    >
-                      {pages.map((page: string, index: number) => (
-                        <li
-                          key={'NavigationItem-' + index}
-                          className={'zoomOnHover ' + (scrolled ? 'blackText' : 'whiteText')}
-                          style={listitem}
-                          onClick={() => {
-                            const element = document.getElementById(ids[index])
-                            if (element)
-                              element.scrollIntoView({
-                                block: element.id === 'home' ? 'end' : 'start',
-                                behavior: 'smooth'
-                              })
-                            setOpen(false)
-                          }}
-                        >
-                          {page}
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
+                  <Desktop
+                    isMedium={isMedium}
+                    scrolled={scrolled}
+                    close={() => setOpen(false)}
+                    pages={pages}
+                    ids={ids}
+                  />
                 )}
               </Box>
             </Box>
             {/* Portal */}
-            <Portal>
-              <aside>
-                <PoseGroup preEnterPose="exit">
-                  {open && (
-                    <Overlay key="Overlay" className="fixed" style={overlay}>
-                      <Box height="100%" justify="end">
-                        <Box
-                          className="absolute"
-                          style={{ top: '1.5em', right: '1.5em' }}
-                          onClick={() => setOpen(false)}
-                        >
-                          <Text className="icon" color="dark" style={{ fontFamily: 'Roboto Mono' }}>
-                            Schließen
-                          </Text>
-                        </Box>
-                        <Box height="90%" justify="evenly" margin={{ bottom: '3em' }}>
-                          {pages.map((link: string, index: number) => {
-                            return (
-                              <OverlayItem
-                                key={link}
-                                className="relative"
-                                margin="0 0 30px 30px"
-                                style={{ display: 'flex' }}
-                                onClick={() => {
-                                  const element = document.getElementById(ids[index])
-                                  if (element)
-                                    element.scrollIntoView({ block: 'start', behavior: 'smooth' })
-                                  setOpen(false)
-                                }}
-                              >
-                                <Box>
-                                  <Text style={number}>{'0' + (index + 1)}</Text>
-                                  <Text style={page}>{link}</Text>
-                                </Box>
-                              </OverlayItem>
-                            )
-                          })}
-                        </Box>
-                      </Box>
-                    </Overlay>
-                  )}
-                </PoseGroup>
-              </aside>
-            </Portal>
+            <Mobile open={open} close={() => setOpen(false)} pages={pages} ids={ids} />
           </>
         )
       }}

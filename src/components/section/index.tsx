@@ -16,105 +16,103 @@ interface Props {
 }
 
 // ===============================================
-const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => {
-  return (
-    <ResponsiveContext.Consumer>
-      {size => {
-        const isMobile = size.includes('small')
+const Section: FC<Props> = ({ textLeft, title, subtitle, paragraph, url }) => (
+  <ResponsiveContext.Consumer>
+    {size => {
+      const isMobile = size.includes('small')
 
-        // Styles
-        const sectionLeft = isMobile
-          ? {
-              width: '90%',
-              height: textLeft ? 'auto' : '30vh',
-              margin: 'auto'
-            }
-          : {
-              width: textLeft ? '45%' : '40%',
-              height: textLeft ? '85%' : '90%',
-              left: '3%',
-              bottom: '5%'
-            }
+      // Styles
+      const sectionLeft = isMobile
+        ? {
+            width: '90%',
+            height: textLeft ? 'auto' : '30vh',
+            margin: 'auto'
+          }
+        : {
+            width: textLeft ? '45%' : '40%',
+            height: textLeft ? '85%' : '90%',
+            left: '3%',
+            bottom: '5%'
+          }
 
-        const sectionRight = isMobile
-          ? {
-              width: '90%',
-              height: textLeft ? '30vh' : 'auto',
-              margin: '2em auto'
-            }
-          : {
-              width: textLeft ? '40%' : '45%',
-              height: textLeft ? '90%' : '85%',
-              right: '7%',
-              top: '5%'
-            }
+      const sectionRight = isMobile
+        ? {
+            width: '90%',
+            height: textLeft ? '30vh' : 'auto',
+            margin: '2em auto'
+          }
+        : {
+            width: textLeft ? '40%' : '45%',
+            height: textLeft ? '90%' : '85%',
+            right: '7%',
+            top: '5%'
+          }
 
-        // Components
-        const text = (
-          <Box width={isMobile ? '100%' : '90%'}>
-            <Headline alignEnd={!textLeft} title={title} subtitle={subtitle} />
-            <Paragraph
-              size={isMobile ? '0.7em' : '0.8em'}
-              textAlign={textLeft ? 'start' : 'end'}
-              overflow="auto"
-            >
-              {paragraph}
-            </Paragraph>
-          </Box>
-        )
+      // Components
+      const text = (
+        <Box width={isMobile ? '100%' : '90%'}>
+          <Headline alignEnd={!textLeft} title={title} subtitle={subtitle} />
+          <Paragraph
+            size={isMobile ? '0.7em' : '0.8em'}
+            textAlign={textLeft ? 'start' : 'end'}
+            overflow="auto"
+          >
+            {paragraph}
+          </Paragraph>
+        </Box>
+      )
 
-        const image = (
-          <LazyLoadImage
-            alt={title}
-            effect="opacity"
-            src={url}
-            scrollPosition={false}
-            visibleByDefault={false}
-            width="100%"
-            height="100%"
-            style={{ objectFit: 'cover' }}
-          />
-        )
+      const image = (
+        <LazyLoadImage
+          alt={title}
+          effect="opacity"
+          src={url}
+          scrollPosition={false}
+          visibleByDefault={false}
+          width="100%"
+          height="100%"
+          style={{ objectFit: 'cover' }}
+        />
+      )
 
-        return (
+      return (
+        <Box
+          justify="center"
+          align="center"
+          height={isMobile ? 'auto' : '80vh'}
+          pad="2%"
+          background="lightGrey"
+        >
           <Box
+            width="95%"
+            height="95%"
+            className="relative "
+            direction="column"
             justify="center"
             align="center"
-            height={isMobile ? 'auto' : '80vh'}
-            pad="2%"
-            background="lightGrey"
           >
             <Box
-              width="95%"
-              height="95%"
-              className="relative "
-              direction="column"
-              justify="center"
+              className={(isMobile ? '' : 'absolute ') + (textLeft ? '' : 'overlay')}
+              background="transparent"
               align="center"
+              style={sectionLeft}
             >
-              <Box
-                className={(isMobile ? '' : 'absolute ') + (textLeft ? '' : 'overlay')}
-                background="transparent"
-                align="center"
-                style={sectionLeft}
-              >
-                {textLeft ? text : image}
-              </Box>
+              {textLeft ? text : image}
+            </Box>
 
-              <Box
-                className={(isMobile ? '' : 'absolute ') + (textLeft ? 'overlay' : '')}
-                background="transparent"
-                align="end"
-                style={sectionRight}
-              >
-                {textLeft ? image : text}
-              </Box>
+            <Box
+              className={(isMobile ? '' : 'absolute ') + (textLeft ? 'overlay' : '')}
+              background="transparent"
+              align="end"
+              style={sectionRight}
+            >
+              {textLeft ? image : text}
             </Box>
           </Box>
-        )
-      }}
-    </ResponsiveContext.Consumer>
-  )
-}
+        </Box>
+      )
+    }}
+  </ResponsiveContext.Consumer>
+)
 
 export default Section

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, FC } from 'react'
 import { Box } from 'grommet'
 
 // Types
@@ -20,7 +20,7 @@ interface Props {
 }
 
 // ===============================================
-const Gallery: React.FC<Props> = ({ isMobile }) => {
+const Gallery: FC<Props> = ({ isMobile }) => {
   const [sections, setSections] = useState<Array<JSX.Element>>([])
 
   const createSections = () => {
@@ -169,7 +169,7 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
     setSections(newSections)
   }
 
-  // Lifecycle Methods
+  // #region Lifecycle Methods
   useEffect(() => {
     if (gallery.length > 0 && sections.length === 0) createSections()
   })
@@ -177,6 +177,7 @@ const Gallery: React.FC<Props> = ({ isMobile }) => {
   useEffect(() => {
     if (isMobile) createSections()
   }, [isMobile])
+  // #endregion
 
   return (
     <>

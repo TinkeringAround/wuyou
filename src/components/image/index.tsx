@@ -10,16 +10,9 @@ import { TImage } from '../../types'
 // Custom Compontents:
 import Dialog from '../dialog'
 
-// ===============================================
-interface Props {
-  mode: 1 | 2 | 3 | 4 | 5 | 6
-  image: TImage
-  fullsizeable?: boolean
-  small?: boolean
-  face?: boolean
-}
-
 /*
+Übersicht Modi:
+
 Desktop
 1: w50, h50
 2: w50, h100
@@ -30,6 +23,15 @@ Mobile
 5: w100, h50
 6: w100, h100
 */
+
+// ===============================================
+interface Props {
+  mode: 1 | 2 | 3 | 4 | 5 | 6
+  image: TImage
+  fullsizeable?: boolean
+  small?: boolean
+  face?: boolean
+}
 
 // ===============================================
 const Image: React.FC<Props> = ({

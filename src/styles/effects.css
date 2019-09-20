@@ -1,0 +1,58 @@
+/* Effects */
+.noFlickr {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.animation {
+  transition: 0.6s ease;
+}
+
+.whiteText {
+  color: var(--white);
+}
+
+.whiteText:hover {
+  color: var(--red);
+}
+
+.blackText {
+  color: var(--black);
+}
+
+.blackText:hover {
+  color: var(--red);
+}
+
+.whiteShadow {
+  transition: 0.25s ease;
+}
+
+.whiteShadow:hover {
+  opacity: 0.6;
+}
+
+.overlay {
+  transition: 0.25s ease;
+}
+
+.overlay:hover {
+  opacity: 0.6;
+  transform: scale(1.01);
+}
+
+.zoomOnHover {
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.zoomOnHover:hover {
+  transform: scale(1.1);
+}

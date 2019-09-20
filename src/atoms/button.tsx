@@ -19,49 +19,48 @@ const Button: React.FC<Props> = ({
   fontSize,
   link = null,
   textAlign = 'start'
-}) => {
-  const button = {
-    backgroundColor: theme.global.colors.red,
-    display: 'block',
-    transition: 'all 0.2s'
-  }
+}) => (
+  <ResponsiveContext.Consumer>
+    {size => {
+      const isMobile = size.includes('small')
 
-  const text = {
-    fontFamily: 'Roboto Mono',
-    transition: 'all 1s',
-    zIndex: 2
-  }
+      const button = {
+        backgroundColor: theme.global.colors.red,
+        display: 'block',
+        transition: 'all 0.2s'
+      }
 
-  return (
-    <ResponsiveContext.Consumer>
-      {size => {
-        const isMobile = size.includes('small')
+      const text = {
+        fontFamily: 'Roboto Mono',
+        transition: 'all 1s',
+        zIndex: 2
+      }
 
-        return (
-          <GrommetButton
-            className="relative zoomOnHover"
-            style={button}
-            margin="0"
-            onClick={onClick}
-            target={link ? '_blank' : undefined}
-            href={link ? link : undefined}
-          >
-            <Box justify="center" height="fit-content" width="100%">
-              <Text
-                size={fontSize ? fontSize : isMobile ? '0.8em' : '1.25em'}
-                weight="bold"
-                textAlign={textAlign}
-                color={theme.global.colors.white}
-                style={{ padding: isMobile ? '1em' : '0.75em', ...text }}
-              >
-                {children}
-              </Text>
-            </Box>
-          </GrommetButton>
-        )
-      }}
-    </ResponsiveContext.Consumer>
-  )
-}
+      return (
+        <GrommetButton
+          className="relative zoomOnHover noFlickr"
+          style={button}
+          margin="0"
+          onClick={onClick}
+          target={link ? '_blank' : undefined}
+          href={link ? link : undefined}
+        >
+          <Box className="noFlickr" justify="center" height="fit-content" width="100%">
+            <Text
+              className="noFlickr"
+              size={fontSize ? fontSize : isMobile ? '0.8em' : '1.25em'}
+              weight="bold"
+              textAlign={textAlign}
+              color={theme.global.colors.white}
+              style={{ padding: isMobile ? '1em' : '0.75em', ...text }}
+            >
+              {children}
+            </Text>
+          </Box>
+        </GrommetButton>
+      )
+    }}
+  </ResponsiveContext.Consumer>
+)
 
 export default Button

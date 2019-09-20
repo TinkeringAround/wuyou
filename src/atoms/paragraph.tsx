@@ -18,24 +18,23 @@ const Paragraph: React.FC<Props> = ({
   margin = '1.5em 0 0.5em 0',
   overflow = 'visible',
   noPadding = false
-}) => {
-  return (
-    <Text
-      size={size}
-      textAlign={textAlign}
-      color="black"
-      style={{
-        lineHeight: 1.8,
-        letterSpacing: '0.01rem',
-        paddingLeft: noPadding ? 0 : 6,
-        paddingRight: noPadding ? 0 : 6,
-        margin: margin,
-        overflowY: overflow
-      }}
-    >
-      {children}
-    </Text>
-  )
-}
+}) => (
+  <Text
+    className="noFlickr"
+    size={size}
+    textAlign={textAlign}
+    color="black"
+    style={{
+      lineHeight: 1.8,
+      letterSpacing: '0.01rem',
+      paddingLeft: noPadding ? 0 : 6,
+      paddingRight: noPadding ? 0 : 6,
+      margin: margin,
+      overflowY: overflow
+    }}
+  >
+    {children}
+  </Text>
+)
 
 export default Paragraph
