@@ -29,9 +29,26 @@ const Navigation: FC<Props> = ({ scrolled }) => {
       {size => {
         const isMobile = size.includes('small')
         const isMedium = size.includes('medium')
+        const isMiddle = size.includes('middle')
 
-        const title = scrolled ? (isMedium ? '1.3em' : '1.5em') : isMedium ? '1.5em' : '1.75em'
-        const subtitle = scrolled ? (isMedium ? '0.7em' : '1em') : isMedium ? '0.8em' : '1.25em'
+        const title = scrolled
+          ? isMedium
+            ? '1.3em'
+            : '1.5em'
+          : isMedium
+          ? '1.5em'
+          : isMiddle
+          ? '1.675em'
+          : '1.75em'
+        const subtitle = scrolled
+          ? isMedium
+            ? '0.7em'
+            : '1em'
+          : isMedium
+          ? '0.8em'
+          : isMiddle
+          ? '1em'
+          : '1.25em'
         const icon = '90%'
 
         return (
@@ -39,7 +56,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
             <Box
               className="fixed animation"
               width="100%"
-              height={scrolled ? '80px' : '100px'}
+              height={isMobile ? (scrolled ? '60px' : '80px') : scrolled ? '80px' : '100px'}
               background={scrolled ? 'white' : 'transparent'}
               direction="row"
               align="center"
@@ -86,7 +103,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
                     size={subtitle}
                     color={scrolled ? 'dark' : 'lightGrey'}
                     style={{ fontFamily: 'Roboto Mono' }}
-                    margin="0"
+                    margin={scrolled ? '0 0 0.175em' : '0 0 0.25em'}
                   >
                     Chinesische Kampfkunst in Wolfsburg.
                   </Heading>

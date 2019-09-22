@@ -11,6 +11,7 @@ const Home: FC = () => (
     {size => {
       const isMobile = size.includes('small')
       const isMedium = size.includes('medium')
+      const isMiddle = size.includes('middle')
 
       return (
         <>
@@ -36,14 +37,14 @@ const Home: FC = () => (
                 <Box width={isMedium ? '100%' : '90%'} margin="1em 0">
                   <Heading
                     level="1"
-                    size={isMobile ? '3em' : isMedium ? '4em' : '8em'}
+                    size={isMobile ? '3em' : isMedium ? '4em' : isMiddle ? '6.5em' : '8em'}
                     color="white"
                     margin="0"
                   >
                     Wuyou e.V.
                   </Heading>
                   <Text
-                    size={isMobile ? '0.85em' : isMedium ? '1.1em' : '1.5em'}
+                    size={isMobile ? '0.85em' : isMedium ? '1.1em' : isMiddle ? '1.3em' : '1.5em'}
                     margin="0.25em 0 0 6px"
                     color="white"
                     style={{ fontWeight: isMobile ? 100 : 600 }}
@@ -51,7 +52,7 @@ const Home: FC = () => (
                     In familiärer Atmosphäre chinesische Kampfkunst erlernen und trainieren!
                   </Text>
                   <Text
-                    size={isMobile ? '0.85em' : isMedium ? '1.1em' : '1.5em'}
+                    size={isMobile ? '0.85em' : isMedium ? '1.1em' : isMiddle ? '1.3em' : '1.5em'}
                     margin="0.25em 0 0 6px"
                     color="white"
                     style={{ fontWeight: isMobile ? 100 : 600 }}
