@@ -59,6 +59,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
               height={isMobile ? (scrolled ? '60px' : '80px') : scrolled ? '80px' : '100px'}
               background={scrolled ? 'white' : 'transparent'}
               direction="row"
+              justify={isMobile ? 'between' : 'start'}
               align="center"
               style={{
                 boxShadow: scrolled ? '0px 5px 5px 5px rgba(0, 0, 0, 0.15)' : 'none',
@@ -67,7 +68,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
             >
               <Box
                 className="zoomOnHover"
-                width={isMobile ? (scrolled ? '30%' : '40%') : '10%'}
+                width={isMobile ? (scrolled ? '25%' : '30%') : '10%'}
                 height="80%"
                 onClick={() => {
                   const home = document.getElementById('home')
