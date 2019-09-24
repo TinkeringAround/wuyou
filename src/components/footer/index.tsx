@@ -56,7 +56,7 @@ const Footer: FC = () => {
                 margin="0"
               >
                 <Box
-                  className={isMobile ? '' : 'zoomOnHover'}
+                  className={isMobile ? '' : 'scaleWeakest'}
                   height="50%"
                   justify="center"
                   align="center"
@@ -65,6 +65,7 @@ const Footer: FC = () => {
                     const home = document.getElementById('home')
                     if (home) home.scrollIntoView({ block: 'end', behavior: 'smooth' })
                   }}
+                  style={{ cursor: 'pointer' }}
                 >
                   <Box className="noFlickr" height="50%">
                     <Image fit="contain" alt={logo.title} src={logo.url} />
@@ -80,7 +81,6 @@ const Footer: FC = () => {
                     Wushu.Taiji.Fitness.
                   </Text>
                   <Text
-                    className="noFlickr"
                     textAlign="center"
                     color="black"
                     size="0.75em"
@@ -93,6 +93,7 @@ const Footer: FC = () => {
 
                 <Box height="30%" justify="center" align="start" direction="row">
                   <Box
+                    className="whiteShadow"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"
@@ -113,6 +114,7 @@ const Footer: FC = () => {
                     </a>
                   </Box>
                   <Box
+                    className="whiteShadow"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"
@@ -133,6 +135,7 @@ const Footer: FC = () => {
                     </a>
                   </Box>
                   <Box
+                    className="whiteShadow"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"

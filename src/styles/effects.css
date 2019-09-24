@@ -44,8 +44,16 @@
 }
 
 .overlay:hover {
-  opacity: 0.6;
+  opacity: 0.7;
   transform: scale(1.01);
+}
+
+.whiteShadow {
+  transition: 0.25s ease;
+}
+
+.whiteShadow:hover {
+  opacity: 0.7;
 }
 
 .zoomOnHover {
@@ -55,4 +63,12 @@
 
 .zoomOnHover:hover {
   transform: scale(1.1);
+}
+
+.scaleWeakest {
+  transition: 0.25s ease;
+}
+
+.scaleWeakest:hover {
+  transform: scale(1.01);
 }

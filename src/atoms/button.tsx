@@ -38,7 +38,7 @@ const Button: React.FC<Props> = ({
 
       return (
         <GrommetButton
-          className="relative zoomOnHover noFlickr"
+          className="relative whiteShadow noFlickr"
           style={button}
           margin="0"
           onClick={onClick}
