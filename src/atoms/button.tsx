@@ -38,16 +38,15 @@ const Button: React.FC<Props> = ({
 
       return (
         <GrommetButton
-          className="relative whiteShadow noFlickr"
+          className="relative"
           style={button}
           margin="0"
           onClick={onClick}
           target={link ? '_blank' : undefined}
           href={link ? link : undefined}
         >
-          <Box className="noFlickr" justify="center" height="fit-content" width="100%">
+          <Box justify="center" height="fit-content" width="100%">
             <Text
-              className="noFlickr"
               size={fontSize ? fontSize : isMobile ? '0.8em' : '1.25em'}
               weight="bold"
               textAlign={textAlign}

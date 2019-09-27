@@ -48,7 +48,6 @@ const Footer: FC = () => {
               margin="0 0 2em 0"
             >
               <Box
-                className="noFlickr"
                 height="100%"
                 width={isMobile ? '100%' : '60%'}
                 justify="center"
@@ -56,7 +55,6 @@ const Footer: FC = () => {
                 margin="0"
               >
                 <Box
-                  className={isMobile ? '' : 'scaleWeakest'}
                   height="50%"
                   justify="center"
                   align="center"
@@ -67,11 +65,10 @@ const Footer: FC = () => {
                   }}
                   style={{ cursor: 'pointer' }}
                 >
-                  <Box className="noFlickr" height="50%">
+                  <Box height="50%">
                     <Image fit="contain" alt={logo.title} src={logo.url} />
                   </Box>
                   <Text
-                    className="noFlickr"
                     textAlign="center"
                     color="black"
                     size="1.25em"
@@ -93,7 +90,6 @@ const Footer: FC = () => {
 
                 <Box height="30%" justify="center" align="start" direction="row">
                   <Box
-                    className="whiteShadow"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"
@@ -114,7 +110,6 @@ const Footer: FC = () => {
                     </a>
                   </Box>
                   <Box
-                    className="whiteShadow"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"
@@ -135,7 +130,6 @@ const Footer: FC = () => {
                     </a>
                   </Box>
                   <Box
-                    className="whiteShadow"
                     width={wrapper}
                     height={wrapper}
                     margin="0 0.5em"

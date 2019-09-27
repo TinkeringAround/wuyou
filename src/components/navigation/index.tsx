@@ -67,7 +67,7 @@ const Navigation: FC<Props> = ({ scrolled }) => {
               }}
             >
               <Box
-                className="zoomOnHover"
+                className="zoomOnHover noFlickr"
                 width={isMobile ? (scrolled ? '25%' : '30%') : '10%'}
                 height="80%"
                 onClick={() => {

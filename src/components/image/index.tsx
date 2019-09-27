@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Text } from 'grommet'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+
+// Styles
 import '../../../node_modules/react-lazy-load-image-component/src/effects/opacity.css'
+import '../../../node_modules/react-lazy-load-image-component/src/effects/blur.css'
 
 // Atoms:
 import { Simple } from '../../atoms/animation'
@@ -55,25 +58,21 @@ const Image: React.FC<Props> = ({
     width: wide ? '100%' : '50%',
     height: high ? '100%' : '50%',
     transition: 'all 0.2s',
-    transform: hover ? 'scale(1.02)' : 'none',
     cursor: fullsizeable ? 'pointer' : 'unset'
   }
 
   const overlay = {
-    top: 'auto',
-    left: 'auto',
+    top: '0',
+    left: '0',
     zIndex: 1,
-    width: 'calc(100% - ' + (isMobile ? '9px)' : '19px)'),
-    height: 'calc(100% - ' + (isMobile ? '9px)' : '19px)'),
+    width: '100%',
+    height: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0.85)',
 
     display: 'flex',
     flex: 'column',
     justifyContent: 'flex-end',
-    alignItems: 'center',
-
-    transition: 'all 0.05s',
-    transform: hover ? 'scale(1.02)' : 'none'
+    alignItems: 'center'
   }
 
   const title = {
@@ -104,7 +103,6 @@ const Image: React.FC<Props> = ({
           initialPose="hidden"
           pose={hover ? 'visible' : 'hidden'}
           onTouchStart={() => setHover(!hover)}
-          onTouchEnd={() => setHover(!hover)}
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           onClick={fullsizeable ? () => setShowDialog(true) : undefined}

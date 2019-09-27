@@ -48,14 +48,6 @@
   transform: scale(1.01);
 }
 
-.whiteShadow {
-  transition: 0.25s ease;
-}
-
-.whiteShadow:hover {
-  opacity: 0.7;
-}
-
 .zoomOnHover {
   cursor: pointer;
   transition: 0.25s ease;

@@ -47,27 +47,16 @@ const Position: FC = () => (
                         justify="center"
                         align="center"
                       >
-                        <Box className="noFlickr" width="90%" height="90%" justify="center">
-                          <Box
-                            className="noFlickr"
-                            width="100%"
-                            margin="0 0 2em 0"
-                            background="white"
-                          >
+                        <Box width="90%" height="90%" justify="center">
+                          <Box width="100%" margin="0 0 2em 0" background="white">
                             <Text
-                              className="noFlickr"
                               size={isMobile ? '1.5em' : '2.5em'}
                               style={{ fontFamily: 'Roboto Mono', fontWeight: 600 }}
                             >
                               {position.titles[index]}
                             </Text>
-                            <Box
-                              className="noFlickr"
-                              width={isMobile ? '90%' : '70%'}
-                              margin="0.5em 0"
-                            >
+                            <Box width={isMobile ? '90%' : '70%'} margin="0.5em 0">
                               <Text
-                                className="noFlickr"
                                 size={isMobile ? '0.75em' : '1em'}
                                 style={{ fontFamily: 'Roboto Mono' }}
                               >
@@ -75,7 +64,6 @@ const Position: FC = () => (
                               </Text>
                             </Box>
                             <Text
-                              className="noFlickr"
                               size={isMobile ? '0.6em' : '0.75em'}
                               style={{ fontFamily: 'Roboto Mono' }}
                             >
@@ -83,7 +71,6 @@ const Position: FC = () => (
                             </Text>
                           </Box>
                           <Text
-                            className="noFlickr"
                             color="black"
                             size={isMobile ? '0.85em' : '1.25em'}
                             textAlign="end"
@@ -92,7 +79,6 @@ const Position: FC = () => (
                             {day}
                           </Text>
                           <Text
-                            className="noFlickr"
                             color="black"
                             size={isMobile ? '0.75em' : '1em'}
                             textAlign="end"
@@ -107,20 +93,19 @@ const Position: FC = () => (
                 </Box>
               </Box>
               <Box
-                className="noFlickr"
                 width="100%"
                 height={isMobile ? '300px' : '500px'}
                 margin={isMobile ? '2em auto 0 auto' : '4em auto 0 auto'}
               >
                 <a
-                  className="relative noFlickr"
+                  className="relative"
                   href={position.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ width: '100%', height: '100%', display: 'block' }}
                 >
                   <Box
-                    className="absolute noFlickr"
+                    className="absolute card"
                     background={isMobile ? 'rgba(255,255,255,0.9)' : 'white'}
                     pad="1.5em"
                     width={isMobile ? '80%' : 'auto'}
@@ -131,7 +116,6 @@ const Position: FC = () => (
                     }}
                   >
                     <Heading
-                      className="noFlickr"
                       level="3"
                       color="black"
                       size={isMobile ? '1.25em' : '2em'}
