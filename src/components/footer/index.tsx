@@ -45,7 +45,7 @@ const Footer: FC = () => {
               height="400px"
               justify="center"
               align="center"
-              margin="0 0 2em 0"
+              margin="0"
             >
               <Box
                 height="100%"
@@ -169,6 +169,27 @@ const Footer: FC = () => {
                       Datenschutz
                     </Button>
                   </Box>
+                </Box>
+                <Box
+                  width={isMobile ? '100%' : '50%'}
+                  margin={isMobile ? '2em 0' : '2em 0 0'}
+                  justify="center"
+                  align="center"
+                >
+                  <a
+                    aria-label="Gehe zur Homepage von Thomas Maier"
+                    href="https://tinkeringaround.de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'black',
+                      fontSize: '0.7em',
+                      textAlign: 'center'
+                    }}
+                  >
+                    Made with Love by <strong>Thomas Maier.</strong>
+                  </a>
                 </Box>
               </Box>
             </Box>
