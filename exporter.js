@@ -19,7 +19,9 @@ const contentful = require('contentful').createClient({
 const pathPrefix = './src/assets/'
 
 // ===============================================
+console.log('Fetching Contentful Assets...')
 
+// ===============================================
 // Logo
 contentful
   .getEntries({
@@ -226,3 +228,6 @@ contentful
     fs.writeFileSync(pathPrefix + 'footer.json', JSON.stringify(newFooter, null, 2), 'utf-8')
   })
   .catch(error => console.log(error))
+
+// ===============================================
+console.log('Fetching Contentful Assets finished.')
