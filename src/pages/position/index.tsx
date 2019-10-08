@@ -136,7 +136,6 @@ const Position: FC = () => (
                     ))}
                   </Box>
                   <LazyLoadImage
-                    className="whiteShadow"
                     alt="Anfahrt zum Wuyou e.V."
                     effect="opacity"
                     src={isMobile ? position.mapMobile : position.map}
