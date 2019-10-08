@@ -31,14 +31,6 @@
   color: var(--red);
 }
 
-.whiteShadow {
-  transition: 0.25s ease;
-}
-
-.whiteShadow:hover {
-  opacity: 0.6;
-}
-
 .overlay {
   transition: 0.25s ease;
 }
