@@ -61,7 +61,6 @@ const Home: FC = () => (
                   </Text>
                 </Box>
               </Box>
-              {/* TODO: Video */}
               <LazyLoadImage
                 alt="Wuyou e.V. - Das Team"
                 effect="opacity"

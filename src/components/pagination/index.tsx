@@ -48,15 +48,3 @@ const Pagination: FC<Props> = ({ goto, count, currentSlide }) => {
 }
 
 export default Pagination
-
-/*<Text
-                  key={'Pagination-' + number}
-                  className="icon"
-                  size={currentSlide === number ? '2em' : '1.5em'}
-                  margin={number !== count - 1 ? '0 0.5em 0 0' : '0'}
-                  color={currentSlide === number ? 'black' : 'lightgrey'}
-                  style={{ fontFamily: 'Roboto Mono', cursor: 'pointer' }}
-                  onClick={() => goto(number)}
-                >
-                  {'•'}
-                </Text>*/
