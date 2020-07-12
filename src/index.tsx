@@ -55,7 +55,7 @@ const App = () => {
           const isMobile = size.includes('small')
 
           return (
-            <>
+            <React.Fragment>
               <Navigation scrolled={scroll} />
               <Home />
               <Training />
@@ -64,7 +64,7 @@ const App = () => {
               <Position />
               <Footer />
               {isMobile && <Spacer height="8em" />}
-            </>
+            </React.Fragment>
           )
         }}
       </ResponsiveContext.Consumer>
