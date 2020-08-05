@@ -178,7 +178,7 @@ const Footer: FC = () => {
                 >
                   <a
                     aria-label="Gehe zur Homepage von Thomas Maier"
-                    href="https://tinkeringaround.de"
+                    href="https://thomasmaier.netlify.app"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
