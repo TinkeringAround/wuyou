@@ -76,7 +76,6 @@ const Section: FC<Props> = ({textLeft, title, subtitle, paragraph, url}) => {
         />
     )
 
-
     return (
         <Box
             justify="center"

@@ -1,16 +1,9 @@
-import React, {FC, Fragment, useState} from 'react'
-import Slider, {Settings} from 'react-slick'
+import React, {FC, Fragment, useState} from 'react';
+import Slider, {Settings} from "react-slick";
 
-// Hooks
-import {useBreakpoint} from "../../hooks/useBreakpoint";
-
-// Styles
-import '../../../node_modules/slick-carousel/slick/slick.css'
-import '../../../node_modules/slick-carousel/slick/slick-theme.css'
-
-// Custom Components
-import Section from '../../components/section'
-import Pagination from '../../components/pagination'
+// Components
+import Section from "../../../components/section";
+import Pagination from "../../../components/pagination";
 
 // ===============================================
 interface Props {
@@ -18,9 +11,7 @@ interface Props {
 }
 
 // ===============================================
-const Articles: FC<Props> = ({articles}) => {
-    const {isMobile} = useBreakpoint();
-
+const ArticlesDesktop: FC<Props> = ({articles}) => {
     const [slider, setSlider] = useState<Slider | null>(null)
     const [currentSlide, setCurrentSlide] = useState<number>(0)
 
@@ -45,7 +36,7 @@ const Articles: FC<Props> = ({articles}) => {
                 articles.map((article, articleIndex) => (
                     <div key={'Trainer-Article-' + articleIndex}>
                         <Section
-                            textLeft={isMobile ? true : articleIndex % 2 === 0}
+                            textLeft={articleIndex % 2 === 0}
                             title={article.title}
                             subtitle={article.subtitle}
                             paragraph={article.paragraph}
@@ -62,7 +53,7 @@ const Articles: FC<Props> = ({articles}) => {
                 currentSlide={currentSlide}
             />
         </Fragment>
-    )
-}
+    );
+};
 
-export default Articles
+export default ArticlesDesktop;
