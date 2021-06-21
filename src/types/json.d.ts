@@ -1,36 +1,36 @@
-import { TTraining, TFooter, TOpinions, TPosition, TLogo, THome, TGallery, TMedia } from '.'
+import {TTraining, TFooter, TOpinions, TPosition, TLogo, THome, TMedia} from '.'
 
 declare module 'home.json' {
-  const home: THome
-  export default home
+    const home: THome
+    export default home
 }
 
 declare module 'logo.json' {
-  const logo: TLogo
-  export default logo
+    const logo: TLogo
+    export default logo
 }
 
 declare module 'footer.json' {
-  const footer: TFooter
-  export default footer
+    const footer: TFooter
+    export default footer
 }
 
 declare module 'gallery.json' {
-  const gallery: Array<TMedia>
-  export default gallery
+    const gallery: Array<TMedia>
+    export default gallery
 }
 
 declare module 'opinions.json' {
-  const opinions: TOpinions
-  export default opinions
+    const opinions: TOpinions
+    export default opinions
 }
 
 declare module 'position.json' {
-  const position: TPosition
-  export default position
+    const position: TPosition
+    export default position
 }
 
 declare module 'training.json' {
-  const training: TTraining
-  export default training
+    const training: TTraining
+    export default training
 }

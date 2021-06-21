@@ -1,58 +1,58 @@
 /* Effects */
 .noFlickr {
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .animation {
-  transition: 0.6s ease;
+    transition: 0.6s ease;
 }
 
 .whiteText {
-  color: var(--white);
+    color: var(--white);
 }
 
 .whiteText:hover {
-  color: var(--red);
+    color: var(--red);
 }
 
 .blackText {
-  color: var(--black);
+    color: var(--black);
 }
 
 .blackText:hover {
-  color: var(--red);
+    color: var(--red);
 }
 
 .overlay {
-  transition: 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .overlay:hover {
-  opacity: 0.7;
-  transform: scale(1.01);
+    opacity: 0.7;
+    transform: scale(1.01);
 }
 
 .zoomOnHover {
-  cursor: pointer;
-  transition: 0.25s ease;
+    cursor: pointer;
+    transition: 0.25s ease;
 }
 
 .zoomOnHover:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .scaleWeakest {
-  transition: 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .scaleWeakest:hover {
-  transform: scale(1.01);
+    transform: scale(1.01);
 }
