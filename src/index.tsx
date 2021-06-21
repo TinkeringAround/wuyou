@@ -57,7 +57,7 @@ const App = () => {
             <Home/>
             <Training/>
             <Opinions/>
-            <Gallery isMobile={isMobile}/>
+            <Gallery/>
             <Position/>
             <Footer/>
             {isMobile && <Spacer height="8em"/>}

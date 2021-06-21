@@ -1,33 +1,32 @@
 body {
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-  font-family: 'Roboto';
-  font-size: 14px;
-  letter-spacing: 0.02rem;
-  -webkit-overflow-scrolling: touch;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    font-family: Roboto sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02rem;
+    -webkit-overflow-scrolling: touch;
 
-  overflow-x: hidden;
-  cursor: default;
+    cursor: default;
 }
 
 /* Positioning */
 .fixed {
-  position: fixed;
+    position: fixed;
 }
 
 .relative {
-  position: relative;
+    position: relative;
 }
 
 .absolute {
-  position: absolute;
+    position: absolute;
 }
 
 .sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }

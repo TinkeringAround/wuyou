@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, {FC, Fragment} from 'react'
 
 // Partials:
 import Articles from './articles'
@@ -12,11 +12,11 @@ import * as training from '../../assets/training.json'
 
 // ===============================================
 const Training: FC = () => (
-  <>
-    <Spacer id="training" height="0" />
-    <Articles articles={training.articles} />
-    <Trainerteam trainers={training.trainers} />
-  </>
+    <Fragment>
+        <Spacer id="training" height="0"/>
+        <Articles articles={training.articles}/>
+        <Trainerteam trainers={training.trainers}/>
+    </Fragment>
 )
 
 export default Training
