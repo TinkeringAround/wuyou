@@ -5,7 +5,6 @@ import {Grommet} from 'grommet'
 import * as Sentry from '@sentry/browser'
 
 // Styles
-import './styles/fonts.css'
 import './styles/colors.css'
 import './styles/global.css'
 import './styles/effects.css'
