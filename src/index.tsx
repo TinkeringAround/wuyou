@@ -25,6 +25,7 @@ import Position from './pages/position'
 import Navigation from './components/navigation/'
 import Footer from './components/footer/'
 import Spacer from './components/spacer'
+import Notifications from "./components/notification";
 
 // Sentry Init
 Sentry.init({dsn: process.env.REACT_APP_SENTRY_URL})
@@ -53,6 +54,7 @@ const App = () => {
                 }
             }}
         >
+            <Notifications/>
             <Navigation scrolled={scroll}/>
             <Home/>
             <Training/>

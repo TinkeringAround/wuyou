@@ -1,4 +1,4 @@
-import {TTraining, TFooter, TOpinions, TPosition, TLogo, THome, TMedia} from '.'
+import {TTraining, TFooter, TOpinions, TPosition, TLogo, THome, TMedia, TNotification} from '.'
 
 declare module 'home.json' {
     const home: THome
@@ -8,6 +8,11 @@ declare module 'home.json' {
 declare module 'logo.json' {
     const logo: TLogo
     export default logo
+}
+
+declare module 'notification.json' {
+    const notification: TNotification
+    export default notification
 }
 
 declare module 'footer.json' {

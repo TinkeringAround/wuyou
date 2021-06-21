@@ -12,6 +12,20 @@ export type TLogo = {
 }
 
 // ===============================================
+export type TNotification = {
+    latest: TNotificationItem | null
+}
+
+export type TNotificationItem = {
+    title: string
+    content: string
+    media: {
+        title: string
+        url: string
+    }
+}
+
+// ===============================================
 export type TTraining = {
     articles: Array<TArticle>
     trainers: Array<TImage>
