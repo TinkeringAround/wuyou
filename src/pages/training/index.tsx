@@ -1,6 +1,6 @@
 import React, {FC, Fragment} from 'react'
 
-// Partials:
+// Partials
 import Articles from './articles'
 import Trainerteam from './trainers'
 
