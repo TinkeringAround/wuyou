@@ -1,9 +1,9 @@
-import React, {FC, Fragment} from 'react'
-import {Box, Heading, Text} from 'grommet'
-import {LazyLoadImage} from 'react-lazy-load-image-component'
+import React, { FC, Fragment } from 'react'
+import { Box, Heading, Text } from 'grommet'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 // Hooks
-import {useBreakpoint} from "../../hooks/useBreakpoint";
+import { useBreakpoint } from '../../hooks/useBreakpoint'
 
 // Atoms
 import Headline from '../../atoms/headline'
@@ -117,13 +117,13 @@ const Position: FC = () => {
                                 }}
                             >
                                 <Heading
-                                    level="3"
-                                    color="black"
-                                    size={isMobile ? '1.25em' : '2em'}
-                                    margin="0"
-                                    style={{fontFamily: 'Roboto Mono'}}
+                                  level='3'
+                                  color='black'
+                                  size={isMobile ? '1.25em' : '2em'}
+                                  margin='0'
+                                  style={{ fontFamily: 'Roboto Mono' }}
                                 >
-                                    Trainingsort
+                                    Hier trainieren wir!
                                 </Heading>
                                 {position.address.map((address: string, index: number) => (
                                     <Paragraph
