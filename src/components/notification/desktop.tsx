@@ -48,9 +48,10 @@ const NotificationDesktop: FC<Props> = ({notification}) => {
                 </CardHeader>
                 <CardBody style={{fontSize: '0.9rem', lineHeight: '1.25rem'}}>{notification?.content}</CardBody>
                 <CardFooter justify="start" background="lightGrey" pad={{top: 'small'}}>
+                    {notification?.media &&
                     <Button fontSize="1rem" link={notification?.media.url}>
                         {notification?.media.title}
-                    </Button>
+                    </Button>}
                 </CardFooter>
             </Card>
         </Simple>

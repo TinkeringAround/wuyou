@@ -52,9 +52,10 @@ const NotificationMobile: FC<Props> = ({notification}) => {
                     </CardHeader>
                     <CardBody style={{fontSize: '0.8rem', lineHeight: '1rem'}}>{notification?.content}</CardBody>
                     <CardFooter justify="start" background="lightGrey" pad={{top: 'medium'}}>
-                        <Button fontSize="0.9rem" link={notification?.media.url}>
+                       {notification?.media && 
+                       <Button fontSize="0.9rem" link={notification?.media.url}>
                             {notification?.media.title}
-                        </Button>
+                        </Button>}
                     </CardFooter>
                 </Card>
             </Simple>
