@@ -22,7 +22,7 @@ export type TNotificationItem = {
   media: {
     title: string
     url: string
-  }
+  } | null
 }
 
 // ===============================================
