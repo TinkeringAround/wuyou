@@ -44,7 +44,7 @@ const Image: React.FC<Props> = ({
                                     small = false,
                                     face = false
                                 }) => {
-    const {name, description, addition, url} = image
+    const {name, description, url} = image
     const [hover, setHover] = useState(false)
     const [showDialog, setShowDialog] = useState(false)
 
@@ -110,7 +110,7 @@ const Image: React.FC<Props> = ({
                 >
                     <Box width="100%" height="100%" direction="column" justify="center" align="center">
                         <Text textAlign="start" weight="bold" color="dark" style={title}>
-                            {name + (addition ? ',' + addition : '')}
+                            {name}
                         </Text>
                         {description != null &&
                         description.map((entry: string, index: number) => (

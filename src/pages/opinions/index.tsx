@@ -76,7 +76,7 @@ const Opinions: FC = () => {
                   >
                     <Text style={quoteContent}>{'"' + quote.quote + '"'}</Text>
                     <Text textAlign='end' style={quoteAuthor}>
-                      {quote.author + ', ' + quote.age}
+                      {quote.author}
                     </Text>
                   </Box>
                 )
